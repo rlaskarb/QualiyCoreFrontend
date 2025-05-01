@@ -1,0 +1,374 @@
+/* 기본 컨테이너 설정 */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+/* 헤더 섹션 - 최상단 회사 이름 */
+.headerSection {
+  height: 5%;
+  min-height: 40px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 30;
+}
+
+.companyName {
+  font-family: 'Castoro Titling', serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #333;
+  margin-left: 1rem;
+}
+
+/* 슬라이더 섹션 */
+.sliderSection {
+  height: 87%;
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f9fa !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background-size: contain; /* contain으로 설정하여 이미지가 잘리지 않도록 */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f8f9fa;
+}
+
+.active {
+  opacity: 1;
+}
+
+/* 슬라이더 오버레이 */
+.slideOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0) 60%);
+  z-index: 2;
+}
+
+.slideContent {
+  position: relative;
+  z-index: 3;
+  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.slideTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.slideDescription {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* 슬라이더 네비게이션 */
+.sliderNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  font-size: A1.7rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+}
+
+.sliderNav:hover {
+  background-color: rgba(255,255,255,0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* 슬라이더 인디케이터 */
+.sliderIndicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: white;
+}
+
+/* 로그인 섹션 */
+.loginSection {
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background-color: #f8f9fa !important;
+  box-shadow: none !important;
+  border-top: none !important;
+}
+
+.loginSection::before {
+  display: none; 
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* 로그인 폼 레이아웃 - 이 부분은 유지 */
+.loginForm {
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) minmax(200px, 2fr) auto auto auto;
+  grid-template-areas: 
+    "employeeId password checkbox passwordReset loginBtn";
+  width: 100%;
+  max-width: 1200px;
+  gap: 5rem;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.formGroup {
+  position: relative;
+}
+
+.formGroup:nth-child(1) {
+  grid-area: employeeId;
+}
+
+.formGroup:nth-child(2) {
+  grid-area: password;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.9rem 1rem 0.9rem 2.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.inputField:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* 아이콘 추가 */
+.formGroup::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* 사번 입력 필드 아이콘 */
+.formGroup:first-child::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z' fill='%23555555'/%3E%3C/svg%3E");
+}
+
+/* 비밀번호 입력 필드 아이콘 */
+.formGroup:nth-child(2)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM11 14V16H13V14H11ZM7 14V16H9V14H7ZM15 14V16H17V14H15Z' fill='%23555555'/%3E%3C/svg%3E");
+}
+
+.checkboxGroup {
+  grid-area: checkbox;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  justify-self: start;
+  font-size: 0.875rem;
+  color: #555;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.checkboxGroup:hover {
+  color: #333;
+}
+
+.checkboxGroup input {
+  margin-right: 0.5rem;
+  accent-color: #4A90E2;
+  cursor: pointer;
+}
+
+.passwordReset {
+  grid-area: passwordReset;
+  justify-self: start;
+  font-size: 0.875rem;
+  color: #4A90E2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+  left: -50px;
+  position: relative;
+}
+
+.passwordReset:hover {
+  color: #2E5AAC;
+  text-decoration: underline;
+}
+
+.loginButton {
+  grid-area: loginBtn;
+  justify-self: start;
+  background: linear-gradient(135deg, #42A5F5, #2E5AAC);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+  height: 52px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(46, 90, 172, 0.2);
+}
+
+.loginButton:hover {
+  background: linear-gradient(135deg, #2E5AAC, #1E3A8A);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(46, 90, 172, 0.3);
+}
+
+.loginButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(46, 90, 172, 0.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .loginForm {
+    grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) auto auto;
+    grid-template-areas: 
+      "employeeId password checkbox passwordReset"
+      "loginBtn loginBtn loginBtn loginBtn";
+    row-gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderSection {
+    height: 60%;
+  }
+  
+  .loginSection {
+    height: 35%;
+  }
+  
+  .loginForm {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "employeeId"
+      "password"
+      "checkbox"
+      "passwordReset"
+      "loginBtn";
+    gap: 0.8rem;
+  }
+  
+  .loginButton {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+.slideImage {
+  width: auto;
+  height: auto;
+  max-width: 100%; /* 더 큰 크기 */
+  max-height: 110%; /* 더 큰 크기 */
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px; /* 이 값을 조정하여 이미지를 아래로 이동 */
+  object-fit: contain;
+  position: relative; /* 상대적 위치 지정 */
+  top: 100px; /* 이 값을 조정하여 이미지를 아래로 이동 */
+}
+
+/* 약간의 연결 효과를 위한 그라데이션 배경 추가 */
+.loginContainer {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #f8f9fa 100%);
+}
+
+:root {
+  --main-bg-color: #f8f9fa;
+  --accent-color: #3182CE;
+}

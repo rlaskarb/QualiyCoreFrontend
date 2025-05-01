@@ -1,0 +1,464 @@
+/* 게시글 상세 조회 컨테이너 */
+.container {
+  width: 100%;
+  height: calc(100vh - 120px);
+  padding: 1rem;
+  display: flex;
+  box-sizing: border-box;
+}
+
+/* 메인 컨텐츠 영역 */
+.contentContainer {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 페이지 제목 */
+.pageTitle {
+  font-size: 1.5rem;
+  color: #2B3674;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* 테이블 스타일 */
+.detailTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.detailTable th,
+.detailTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.detailTable th {
+  font-weight: 600;
+  width: 150px;
+  color: #2D3748;
+  background-color: #F4F7FE;
+}
+
+.detailTable td {
+  color: #333;
+}
+
+/* 라벨 */
+.label {
+  font-weight: 600;
+  color: #2D3748;
+}
+
+.label1 {
+  display: block;
+  font-weight: 600;
+  color: #2D3748;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  background-color: #F4F7FE;
+  padding: 12px 15px;
+  border-radius: 8px;
+}
+
+/* 카테고리 태그 스타일 */
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.important {
+  background-color: rgba(229, 62, 62, 0.9);
+  color: white;
+  box-shadow: 0 2px 4px rgba(229, 62, 62, 0.3);
+}
+
+.notice {
+  background-color: rgba(43, 108, 176, 0.9);
+  color: white;
+  box-shadow: 0 2px 4px rgba(43, 108, 176, 0.3);
+}
+
+.normal {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+/* 내용 영역 */
+.contentRow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  overflow: auto;
+}
+
+.content {
+  background-color: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  line-height: 1.6;
+  height: 335px;
+}
+
+/* 첨부파일 관련 */
+.fileLabel {
+  font-weight: 600;
+  color: #2D3748;
+  margin-left: 1rem;
+}
+
+.fileLink {
+  background: none;
+  border: none;
+  color: #2B6CB0;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
+.fileLink:hover {
+  color: #1A4373;
+}
+
+/* 버튼 영역 */
+.buttonAll {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 목록 버튼 */
+.backButton {
+  background-color: #2B6CB0;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.backButton:hover {
+  background-color: #1A4373;
+  transform: translateY(-2px);
+}
+
+/* 수정 버튼 */
+.updateButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.updateButton:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* 삭제 버튼 */
+.deleteButton {
+  background-color: #E53E3E;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.deleteButton:hover {
+  background-color: #C53030;
+  transform: translateY(-2px);
+}
+
+/* 저장 버튼 */
+.saveButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* 취소 버튼 */
+.removeButton {
+  background-color: #2B6CB0;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.removeButton:hover {
+  background-color: #1A4373;
+  transform: translateY(-2px);
+}
+
+/* 수정 모드 입력 필드 */
+input[name="boardTitle"],
+select[name="boardCategory"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+input[name="boardTitle"]:focus,
+select[name="boardCategory"]:focus {
+  border-color: #2B6CB0;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.1);
+}
+
+/* ReactQuill 에디터 스타일 */
+.ql-container {
+  border-radius: 0 0 8px 8px !important;
+  border-color: #E2E8F0 !important;
+}
+
+.ql-toolbar {
+  border-radius: 8px 8px 0 0 !important;
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.ql-editor {
+  min-height: 300px !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  padding: 1rem !important;
+}
+
+/* 모달 스타일 - 공통 */
+.successModal,
+.warningModal {
+  width: 100%;
+  max-width: 390px;
+  margin: auto;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 48%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* 모달 헤더 - 공통 */
+.successModalHeader,
+.warningModalHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+/* 모달 닫기 버튼 - 공통 */
+.successCloseButton,
+.warningCloseButton {
+  background: #F8FAFF;
+  border: 1px solid #E2E8F0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #718096;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.successCloseButton:hover,
+.warningCloseButton:hover {
+  background-color: #EBF8FF;
+  color: #2B6CB0;
+  transform: rotate(90deg);
+}
+
+/* 모달 내용 - 공통 */
+.successModalContent,
+.warningModalContent {
+  padding: 20px;
+  text-align: center;
+}
+
+/* 모달 메시지 - 공통 */
+.successMessage,
+.warningMessage {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #333;
+}
+
+
+/* 성공 모달 특화 스타일 */
+.successModal {
+  border-top: 5px solid #48BB78;
+}
+
+/* 경고 모달 특화 스타일 */
+.warningModal {
+  border-top: 5px solid #F56565;
+}
+
+.successModalContent {
+  color: #2F855A;
+}
+
+.warningModalContent {
+  color: #C53030;
+}
+
+/* 오버레이 스타일 */
+.modal-overlay,
+.warningModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+
+  .container,
+  .contentContainer {
+    height: auto;
+    min-height: calc(100vh - 100px);
+  }
+
+  .fileLabel {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .buttonAll {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .contentContainer {
+    padding: 1rem;
+  }
+
+  .detailTable th {
+    width: 120px;
+  }
+
+  .buttonAll {
+    flex-direction: column;
+  }
+
+  .backButton,
+  .updateButton,
+  .deleteButton,
+  .saveButton,
+  .removeButton {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .detailTable {
+    display: block;
+  }
+
+  .detailTable tbody {
+    display: block;
+  }
+
+  .detailTable tr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .detailTable th,
+  .detailTable td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .detailTable th {
+    border-bottom: none;
+    padding-bottom: 5px;
+  }
+
+  .detailTable td {
+    padding-top: 5px;
+  }
+
+  .categoryTag {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}

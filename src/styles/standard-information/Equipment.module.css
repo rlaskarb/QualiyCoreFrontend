@@ -1,0 +1,622 @@
+/* Equipment.module.css */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Pretendard-Regular', sans-serif;
+}
+
+.mainBar {
+    width: 100%;
+    height: calc(100vh - 235px);
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 1rem auto;
+    max-width: 1450px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(to right, #f8fafc, #f0f4f8);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.createButton {
+    padding: 0.9rem 2rem;
+    background: linear-gradient(to right, #4C51BF, #6875F5);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 81, 191, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.createButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76, 81, 191, 0.4);
+    background: linear-gradient(to right, #434190, #5A67D8);
+}
+
+.createSelect,
+.searchBarInput,
+.searchButton {
+    height: 48px;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.createSelect {
+    width: 120px;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+}
+
+.searchBarInput {
+    flex-grow: 1;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+    margin: 0 1rem;
+}
+
+.searchButton {
+    width: 100px;
+    background: linear-gradient(to right, #4C51BF, #6875F5);
+    color: white;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.searchButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76, 81, 191, 0.4);
+    background: linear-gradient(to right, #434190, #5A67D8);
+}
+
+.equipmentTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.equipmentTable th {
+    background: linear-gradient(to right, #EBF4FF, #E6FFFA);
+    color: #2C5282;
+    padding: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.equipmentTable td {
+    padding: 1.2rem;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    color: #2D3748;
+}
+
+.equipmentRow {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.equipmentRow:hover {
+    background-color: #F0F4F8;
+    transform: scale(1.01);
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.warningModalOverlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* <- 혹시 none으로 되어 있다면 수정 */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalHeader {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.closeButton {
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.closeButton:hover {
+    background-color: #EBF8FF;
+    color: #2B6CB0;
+    transform: rotate(90deg);
+}
+
+.modalContent {
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.modalContent h1 {
+    font-size: 1.5rem;
+    color: #2C5282;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.equipmentImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.leftTable,
+.centerTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.5rem;
+}
+
+.detailLabel {
+    background-color: #f0f4f8;
+    color: #2C5282;
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+}
+
+.detailValue {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+}
+
+.tableContainer {
+    margin-bottom: 1.5rem;
+}
+
+.textareaContainer {
+    margin-bottom: 1.5rem;
+}
+
+.detailLabelText {
+    font-weight: 600;
+    color: #2C5282;
+    margin-bottom: 0.75rem;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 0.95rem;
+}
+
+.buttonLayout {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.editButton,
+.deleteButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.editButton {
+    background-color: #48BB78;
+    color: white;
+}
+
+.editButton:hover {
+    background-color: #38A169;
+}
+
+.deleteButton {
+    background-color: #E53E3E;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #C53030;
+}
+
+.createModal {
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* 변경된 부분 */
+    position: relative;
+}
+
+.createModalContent {
+    padding: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* 가로 스크롤바 제거 */
+}
+
+.modalHeader1 {
+    position: sticky;
+    /* 스크롤 내려도 고정 */
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    z-index: 100;
+    /* 다른 요소보다 위에 보이도록 */
+}
+
+.createCloseButton {
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.createCloseButton:hover {
+    background-color: #EBF8FF;
+    color: #2B6CB0;
+    transform: rotate(90deg);
+}
+
+
+.createInputContainer {
+    margin-bottom: 1rem;
+}
+
+.createInputLabel {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2C5282;
+    font-weight: 600;
+}
+
+.createInputField {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField1 {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField2 {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField3 {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField4 {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField5 {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField6 {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createInputField7 {
+    width: 92%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.createButton1 {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(to right, #4C51BF, #6875F5);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.createButton1:hover {
+    background: linear-gradient(to right, #434190, #5A67D8);
+}
+
+.successModal,
+.warningModal {
+    max-width: 400px;
+    width: 90%;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.successModalHeader,
+.warningModalHeader {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.successCloseButton,
+.warningCloseButton {
+    background: #F8FAFF;
+    border: 1px solid #E2E8F0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    margin: -5px -5px 0 0;
+    /* 🔥 버튼을 조금 더 오른쪽 위로 */
+}
+
+.successCloseButton:hover,
+.warningCloseButton:hover {
+    background-color: #EBF8FF;
+    color: #2B6CB0;
+    transform: rotate(90deg);
+}
+
+.successModalContent,
+.warningModalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.successMessage,
+.warningMessage {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2D3748;
+}
+
+.noResult {
+    text-align: center;
+    padding: 3rem 0;
+    color: #718096;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #F8FAFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 2rem 0;
+}
+
+
+/* 성공 모달 특화 스타일 */
+.successModal {
+    border-top: 5px solid #48BB78;
+}
+
+/* 경고 모달 특화 스타일 */
+.warningModal {
+    border-top: 5px solid #F56565;
+}
+
+.successModalContent {
+    color: #2F855A;
+}
+
+.warningModalContent {
+    color: #C53030;
+}
+
+.noText {
+    text-align: center;
+    padding: 3rem 0;
+    color: #718096;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #F8FAFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 2rem 0;
+}
+
+/* 반응형 디자인 강화 */
+@media (max-width: 1200px) {
+    .mainBar {
+        max-width: 95%;
+        padding: 1.2rem;
+        height: calc(100vh - 120px);
+    }
+
+    .modal,
+    .createModal {
+        width: 95%;
+        max-width: none;
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainBar {
+        padding: 1rem;
+        height: auto;
+        min-height: calc(100vh - 80px);
+    }
+
+    .titleBar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal,
+    .createModal {
+        width: 95%;
+        margin: 0.5rem;
+    }
+
+    .modalContent,
+    .createModalContent {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,494 @@
+/* 전체 폼 컨테이너 */
+.filtrationForm {
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 1300px;
+    max-width: 100%;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease-out;
+    height: calc(100vh - 170px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .filtrationForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #EC4899, #f472b6);
+  }
+  
+  
+  /* 제목 스타일 */
+  .filtrationTitle {
+    font-size: 1.8rem;
+    color: #2B3674;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  
+  .filtrationTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, #EC4899, #f472b6);
+    border-radius: 2px;
+  }
+  
+  /* 폼 그리드 레이아웃 */
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* 그리드 아이템 */
+  .gridItem {
+    position: relative;
+  }
+  
+  /* 작업지시 ID 스타일 */
+  .fGridItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fLabel01 {
+    font-size: 0.9rem;
+    color: #4A5568;
+    font-weight: 600;
+  }
+  
+  .fItem01 {
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    background-color: #f8faff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: #4A5568;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 라벨과 입력 필드 스타일 */
+  .label {
+    display: block;
+    font-size: 0.9rem;
+    color: #4A5568;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .inputField {
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    background-color: white;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: #4A5568;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .inputField:focus {
+    border-color: #EC4899;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+  }
+  
+  /* textarea 높이 조정 */
+  textarea.inputField {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  /* 타이머 스타일 */
+  .timer {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #EC4899;
+    background: linear-gradient(to right, #EC4899, #f472b6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    animation: pulse 2s infinite;
+  }
+  
+  .timer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(to right, #EC4899, #f472b6);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(236, 72, 153, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+    }
+  }
+  
+  /* 제출 버튼 스타일 */
+  .submitButton {
+    padding: 0.9rem 1.8rem;
+    background: linear-gradient(to right, #EC4899, #f472b6);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3);
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    width: auto;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    background: linear-gradient(to right, #db2777, #ec4899);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(236, 72, 153, 0.4);
+  }
+  
+  .submitButton:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .submitButton:disabled {
+    background: linear-gradient(to right, #f9a8d4, #fbcfe8);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* 공정 진행 중 버튼 스타일 */
+  .submitButton.processing {
+    background: linear-gradient(to right, #d946ef, #ec4899);
+    cursor: not-allowed;
+    animation: processing 2s infinite;
+  }
+  
+  @keyframes processing {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* 미디어 쿼리 */
+  @media (max-width: 768px) {
+    .formGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .filtrationTitle {
+      font-size: 1.5rem;
+    }
+    
+    .timer {
+      font-size: 1rem;
+    }
+  }
+  
+  /* 애니메이션 */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .filtrationForm {
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  /* 이동 진행 중일 때 가시적 효과 */
+  .processingContainer {
+    position: relative;
+    overflow: hidden;
+    grid-column: 1 / -1;
+    background: linear-gradient(to right, #fdf2f8, #fcfcfc);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.1);
+    border: 1px solid rgba(236, 72, 153, 0.1);
+  }
+  
+  .processingBar {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #EC4899, #f472b6);
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .processingBar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* 타이머 관련 CSS */
+.controlsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    grid-column: 1 / -1;
+  }
+  
+  /* 타이머 컨테이너 - EC4899 핑크 그라데이션 사용 */
+  .timerContainer {
+    flex: 2;
+    background: linear-gradient(135deg, #EC4899, #F472B6);
+    border-radius: 16px;
+    padding: 0.9rem;
+    box-shadow: 0 8px 15px rgba(236, 72, 153, 0.12);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    min-width: 450px;
+    height: 80px;
+  }
+  
+  .timerContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #EC4899, #F472B6);
+  }
+  
+  .timerLabel {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .timerDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0.2rem 0;
+  }
+  
+  .timerIcon {
+    height: 28px;
+    width: 28px;
+  }
+  
+  .timerValue {
+    font-family: 'Consolas', monospace;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.2rem 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 100px;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .timerStatus {
+    font-size: 0.75rem;
+    color: #FBCFE8;
+    margin-top: 0.2rem;
+    animation: pulse 2s infinite;
+    font-weight: 500;
+  }
+  
+  /* 버튼 컨테이너 */
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+  }
+  
+  /* 진행 막대 스타일 */
+  .progressBar {
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 20px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+  }
+  
+  .progressBarFill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #EC4899, #F472B6);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progressBarFill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 1100px) {
+    .timerContainer {
+      min-width: 350px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .controlsContainer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .timerContainer {
+      min-width: unset;
+      max-width: 100%;
+      margin-bottom: 1rem;
+    }
+    
+    .buttonContainer {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .timerDisplay {
+      flex-direction: row;
+      font-size: 1.2rem;
+    }
+    
+    .timerContainer {
+      height: 70px;
+    }
+    
+    .timerIcon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (max-width: 1500px) {
+    .filtrationForm {
+      width: 95%;
+    }
+  }

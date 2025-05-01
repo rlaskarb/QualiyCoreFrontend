@@ -1,0 +1,403 @@
+.maturationForm {
+    background-color: #f8faff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    width: 1300px;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease-out;
+    height: calc(100vh - 170px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  
+  .maturationForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #14B8A6, #2DD4BF);
+    border-radius: 16px 16px 0 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .maturationTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2B3674;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #E2E8F0;
+    position: relative;
+  }
+  
+  .maturationTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(to right, #14B8A6, #2DD4BF);
+    border-radius: 2px;
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .gridItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* 라벨 스타일 */
+  .gridItem label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4A5568;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* 일부 레이블에 아이콘 추가 */
+  .gridItem:nth-child(2) label::before {
+    content: '⏱️';
+    font-size: 1.2rem;
+  }
+  
+  .gridItem:nth-child(3) label::before, 
+  .gridItem:nth-child(4) label::before {
+    content: '🌡️';
+    font-size: 1.2rem;
+  }
+  
+  .gridItem:nth-child(5) label::before {
+    content: '📊';
+    font-size: 1.2rem;
+  }
+  
+  .gridItem:nth-child(6) label::before,
+  .gridItem:nth-child(7) label::before {
+    content: '🧪';
+    font-size: 1.2rem;
+  }
+  
+  /* 입력 필드 스타일 */
+  .gridItem input,
+  .gridItem textarea {
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .gridItem textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .gridItem input:focus,
+  .gridItem textarea:focus {
+    border-color: #14B8A6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+  }
+  
+  /* 읽기 전용 필드 스타일 */
+  input[readonly] {
+    background-color: #EDF2F7;
+    color: #4A5568;
+    cursor: not-allowed;
+    font-weight: 600;
+  }
+  
+  /* 비활성화된 필드 스타일 */
+  input:disabled {
+    background-color: #EDF2F7;
+    color: #A0AEC0;
+    cursor: not-allowed;
+  }
+  
+  /* 에러 입력 필드 스타일 */
+  .errorInput {
+    border-color: #FC8181 !important;
+    background-color: #FFF5F5;
+  }
+  
+  .errorText {
+    color: #E53E3E;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* 버튼 컨테이너 스타일 */
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    grid-column: 1 / -1;
+  }
+  
+  /* 저장 버튼 스타일 */
+  .submitButton {
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(to right, #14B8A6, #2DD4BF);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(20, 184, 166, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(20, 184, 166, 0.4);
+    background: linear-gradient(to right, #0D9488, #14B8A6);
+  }
+  
+  .submitButton:active:not(:disabled) {
+    transform: translateY(-1px);
+  }
+  
+  .submitButton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+    transition: all 0.4s ease;
+    transform: translateX(-100%);
+  }
+  
+  .submitButton:hover::after {
+    transform: translateX(100%);
+  }
+  
+  /* 비활성화된 버튼 스타일 */
+  .submitButton:disabled {
+    background: linear-gradient(to right, #A0AEC0, #CBD5E0);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* 당화/냉각/발효 공정에서 가져온 타이머 스타일 */
+  .controlsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+  }
+  
+  .timerContainer {
+    flex: 2;
+    background: linear-gradient(135deg, #14B8A6 0%, #2DD4BF 100%);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(20, 184, 166, 0.25);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    width: 100%;
+    height: 120px;
+    transition: all 0.5s ease;
+  }
+  
+  /* 물결 효과 애니메이션 */
+  .timerContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+    animation: wave 3s infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .timerLabel {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  .timerDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0.5rem 0;
+  }
+  
+  .timerIcon {
+    height: 64px;
+    width: 64px;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.3));
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .timerValue {
+    font-family: 'Consolas', monospace;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 2rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .timerStatus {
+    font-size: 0.9rem;
+    color: #99F6E4;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    animation: blink 1.5s infinite;
+    display: block;
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* 반응형 스타일 */
+  @media (max-width: 992px) {
+    .maturationForm {
+      width: 95%;
+    }
+    
+    .formGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .controlsContainer {
+      flex-direction: column;
+    }
+    
+    .timerContainer {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .maturationForm {
+      padding: 1.5rem;
+    }
+    
+    .maturationTitle {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .timerContainer {
+      height: 90px;
+      padding: 1rem;
+    }
+    
+    .timerIcon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .timerValue {
+      font-size: 1.5rem;
+      min-width: 90px;
+    }
+    
+    .submitButton {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      min-width: 160px;
+    }
+  }

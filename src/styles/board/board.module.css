@@ -1,0 +1,428 @@
+/* 게시판 공통 변수 */
+:root {
+  --primary-color: #5687F2;
+  --primary-hover: #4776E0;
+  --secondary-color: #007bff;
+  --secondary-hover: #0056b3;
+  --danger-color: #EF4444;
+  --danger-hover: #DC2626;
+  --light-bg: #F4F7FE;
+  --border-color: #E2E8F0;
+  --text-color: #2B3674;
+  --text-secondary: #718096;
+  --notice-color: #2B6CB0;
+  --important-color: #E53E3E;
+  --normal-color: #F4F7FE;
+  --border-radius: 12px;
+  --shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 12px 25px rgba(43, 108, 176, 0.15);
+  --transition: all 0.3s ease;
+}
+
+/* 게시판 컨테이너 */
+.boardContainer {
+  width: 100%;
+  height: calc(100vh - 120px);
+  padding: 1.5rem;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f8faff;
+  overflow-x: hidden;
+}
+
+/* 게시판 메인 영역 (하얀색 배경 포함) */
+.mainBar {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 페이지 제목 */
+.pageTitle {
+  font-size: 2rem;
+  color: #2B3674;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.pageTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.8rem;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 헤더 영역 (검색바) */
+.headerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 1.8rem;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.headerBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+/* 검색 그룹 */
+.searchGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+/* 버튼 컨테이너 */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 글쓰기 버튼 */
+.leftButton {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, #48BB78, #38A169);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(72, 187, 120, 0.3);
+  font-size: 0.95rem;
+}
+
+.leftButton:hover {
+  background: linear-gradient(to right, #38A169, #2F855A);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(72, 187, 120, 0.4);
+}
+
+.leftButton:active {
+  transform: translateY(0);
+}
+
+/* 검색 옵션 셀렉트 */
+.searchSelect {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4A5568;
+  min-width: 130px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.searchSelect:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+/* 검색 인풋 */
+.searchInput {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  font-size: 0.95rem;
+  min-width: 250px;
+  flex: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  color: #4A5568;
+}
+
+.searchInput:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+/* 검색 버튼 */
+.searchButton {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  font-size: 0.95rem;
+}
+
+.searchButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}
+
+.searchButton:active {
+  transform: translateY(0);
+}
+
+/* 테이블 컨테이너 */
+.tableContainer {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+/* 테이블 기본 스타일 */
+.boardTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 테이블 헤더 */
+.tableHeader {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+}
+
+.boardTable th {
+  background: transparent;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  font-size: 0.95rem;
+}
+
+/* 테이블 데이터 셀 */
+.boardTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+/* 테이블 행 효과 */
+.tableRow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tableRow {
+  background-color: white; /* 기본 배경색을 흰색으로 설정 */
+}
+
+.tableRow:hover {
+  background-color: #EBF8FF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
+  position: relative;
+  z-index: 5;
+}
+
+/* 중요 게시글 & 공지 게시글 & 일반 게시글 */
+.importantRow {
+  background: linear-gradient(to right, #FEEBC8, #FFF5F5); 
+}
+
+.importantRow:hover {
+  background: linear-gradient(to right, #FED7D7, #FEEBC8);
+}
+
+.noticeRow {
+  background: linear-gradient(to right, #E6FFFA, #EBF8FF);
+}
+
+.noticeRow:hover {
+  background: linear-gradient(to right, #BEE3F8, #E6FFFA);
+}
+
+/* 일반 게시글은 기본 흰색 배경 사용 */
+
+/* 카테고리 태그 */
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 70px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.importantTag {
+  background: linear-gradient(to right, #F56565, #FC8181);
+  color: white;
+  box-shadow: 0 2px 5px rgba(245, 101, 101, 0.3);
+}
+
+.normalTag {
+  background: linear-gradient(to right, #A0AEC0, #CBD5E0);
+  color: white;
+  box-shadow: 0 2px 5px rgba(160, 174, 192, 0.3);
+}
+
+.noticeTag {
+  background: linear-gradient(to right, #3182CE, #63B3ED);
+  color: white;
+  box-shadow: 0 2px 5px rgba(49, 130, 206, 0.3);
+}
+
+/* 게시글 없음 메시지 */
+.noText {
+  text-align: center;
+  padding: 3rem 0;
+  color: #718096;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: #F8FAFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+}
+
+/* 페이지네이션 컨테이너 */
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 페이드인 애니메이션 정의 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 테이블 행에 애니메이션 적용 */
+.tableRow {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+  .boardContainer, .mainBar {
+    height: auto;
+    min-height: calc(100vh - 120px);
+  }
+  
+  .headerBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchGroup {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .buttonContainer {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .boardContainer {
+    padding: 1rem;
+  }
+  
+  .mainBar {
+    padding: 1.2rem;
+  }
+  
+  .headerBar {
+    padding: 1.2rem;
+  }
+  
+  .searchGroup {
+    flex-wrap: wrap;
+  }
+  
+  .searchSelect, 
+  .searchInput, 
+  .searchButton {
+    width: 100%;
+  }
+  
+  .boardTable th:nth-child(3),
+  .boardTable td:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .categoryTag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .boardTable th,
+  .boardTable td {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .boardTable th:nth-child(4),
+  .boardTable td:nth-child(4) {
+    display: none;
+  }
+}

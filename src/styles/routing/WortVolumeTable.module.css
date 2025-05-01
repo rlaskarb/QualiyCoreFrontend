@@ -1,0 +1,107 @@
+/* src/pages/routing/WortVolumeTable.module.css */
+
+.tableContainer {
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.wortTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wortTable th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  font-size: 0.95rem;
+}
+
+.wortTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.tableRow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: #EBF8FF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
+  position: relative;
+  z-index: 5;
+}
+
+.wortTable tr:nth-child(even) {
+  background-color: #F0F5FF;
+}
+
+.wortTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 80px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.대기중 {
+  background: linear-gradient(to right, #A0AEC0, #CBD5E0);
+  color: white;
+}
+
+.진행중 {
+  background: linear-gradient(to right, #3182CE, #63B3ED);
+  color: white;
+}
+
+.완료 {
+  background: linear-gradient(to right, #38A169, #68D391);
+  color: white;
+}
+
+.오류 {
+  background: linear-gradient(to right, #E53E3E, #FC8181);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .wortTable {
+    font-size: 12px;
+  }
+  
+  .wortTable th, .wortTable td {
+    padding: 8px 6px;
+  }
+  
+  .statusBadge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+}

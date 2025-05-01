@@ -1,0 +1,603 @@
+.container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  color: #2B3674;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.pageTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.8rem;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 검색 필터 영역 */
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #F4F7FE 0%, #EFF3FF 100%);
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.searchBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+.searchFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 200px;
+  flex: 1;
+}
+
+.searchFilter label {
+  font-size: 0.95rem;
+  color: #2B3674;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.searchFilter input, 
+.searchFilter select {
+  background-color: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  color: #4A5568;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.searchFilter input:focus, 
+.searchFilter select:focus {
+  outline: none;
+  border-color: #4776E0;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+.searchFilter input[type="month"] {
+  cursor: pointer;
+}
+
+/* Excel 다운로드 버튼 */
+.excelButton {
+  background: linear-gradient(to right, #10B981, #059669);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 180px;
+}
+
+.excelButton::before {
+  content: '📊';
+  font-size: 1.2rem;
+}
+
+.excelButton:hover {
+  background: linear-gradient(to right, #0D9488, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+}
+
+.excelButton:active {
+  transform: translateY(0);
+}
+
+/* 탭 영역 */
+.tabs {
+  display: flex;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #E2E8F0;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  color: #718096;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.tabButton:hover {
+  color: #4776E0;
+  background-color: rgba(247, 250, 252, 0.8);
+}
+
+.activeTab {
+  color: #2B6CB0;
+  font-weight: 600;
+  background-color: #F7FAFC;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  border-radius: 2px 2px 0 0;
+}
+
+/* 탭 컨텐츠 영역 */
+.tabContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  animation: fadeIn 0.3s ease-out;
+  justify-content: center; /* 중앙 정렬 추가 */
+  width: 100%;
+  max-width: 1400px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 차트 컨테이너 */
+.chartContainer {
+  flex: 1;
+  min-width: 45%;
+  max-width: 48%; /* 최대 너비 제한 추가 */
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.5s ease-out;
+}
+
+.chartContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.chartContainer h3,
+.fullWidthChart h3,
+.tableContainer h3 {
+  font-size: 1.3rem;
+  color: #2B3674;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.chartContainer::before,
+.fullWidthChart::before,
+.tableContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chartContainer:hover::before,
+.fullWidthChart:hover::before,
+.tableContainer:hover::before {
+  opacity: 1;
+}
+
+.fullWidthChart {
+  width: 100%;
+  max-width: 1200px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+  min-height: 400px;
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullWidthChart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 테이블 컨테이너 */
+.tableContainer {
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tableContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dataTable th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dataTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.2s ease;
+}
+
+.dataTable tr:nth-child(even) td {
+  background-color: #F0F5FF;
+}
+
+.dataTable tr:nth-child(odd) td {
+  background-color: white;
+}
+
+.dataTable tr:hover td {
+  background-color: #EBF8FF;
+}
+
+.dataTable tr:last-child td {
+  border-bottom: none;
+}
+
+/* 로딩 상태 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  color: #718096;
+  font-size: 1.2rem;
+  background-color: #F7FAFC;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.loading::before {
+  content: '⏳';
+  font-size: 1.5rem;
+  margin-right: 0.8rem;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 파이 차트 스타일 */
+.pieChartContainer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pieChartLegend {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  max-width: 200px;
+}
+
+/* Recharts 커스텀 스타일 */
+:global(.recharts-responsive-container) {
+  margin: 0 auto;
+  aspect-ratio: 16/9; /* 그래프 비율 고정 */
+  max-height: 350px; /* 최대 높이 제한 */
+}
+
+:global(.recharts-cartesian-grid-horizontal line),
+:global(.recharts-cartesian-grid-vertical line) {
+  stroke: #E2E8F0;
+}
+
+:global(.recharts-tooltip-wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+:global(.recharts-default-tooltip) {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+:global(.recharts-tooltip-label) {
+  color: #2B3674 !important;
+  font-weight: 600 !important;
+  margin-bottom: 5px !important;
+}
+
+:global(.recharts-tooltip-item) {
+  color: #4A5568 !important;
+  padding: 3px 0 !important;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .tabContent {
+    flex-direction: column;
+  }
+  
+  .chartContainer {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .searchBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .excelButton {
+    align-self: flex-end;
+  }
+  
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+  }
+  
+  .tabButton {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .chartContainer h3,
+  .fullWidthChart h3,
+  .tableContainer h3 {
+    font-size: 1.1rem;
+  }
+  
+  .excelButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .searchFilter {
+    width: 100%;
+  }
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+
+/* 바 차트 애니메이션 */
+@keyframes growUp {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+/* recharts 바 애니메이션 적용 */
+.recharts-bar-rectangle {
+  animation: growUp 1s ease-out forwards;
+}
+
+/* 라인 차트 애니메이션 */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.recharts-line-curve {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease-out forwards;
+}
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 계획 대비 실적 탭 레이아웃 수정 */
+/* 계획 대비 실적 그래프를 위한 특별 스타일 */
+.planVsActualCharts {
+  display: flex;
+  flex-direction: row; /* 좌우 배치로 변경 */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* 계획 대비 실적 차트 컨테이너 */
+.planVsActualChart {
+  flex: 1;
+  min-width: 45%;
+  max-width: 48%;
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.5s ease-out;
+}
+
+.planVsActualChart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.planVsActualChart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.planVsActualChart:hover::before {
+  opacity: 1;
+}
+
+.planVsActualChart h3 {
+  font-size: 1.3rem;
+  color: #2B3674;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* 반응형 디자인 - 작은 화면에서는 세로로 배치 */
+@media (max-width: 1200px) {
+  .planVsActualCharts {
+    flex-direction: column;
+  }
+  
+  .planVsActualChart {
+    min-width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}

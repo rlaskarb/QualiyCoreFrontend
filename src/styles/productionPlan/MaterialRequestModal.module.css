@@ -1,0 +1,452 @@
+/* 모달 오버레이 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 모달 콘텐츠 */
+.modalContent {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 85%;
+  max-width: 1000px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  position: relative;
+  animation: slideUp 0.4s ease;
+  border-top: 5px solid #4776E0;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 모달 스크롤바 스타일링 */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 모달 제목 */
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  position: relative;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modalTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 섹션 스타일 */
+.section {
+  margin-bottom: 2.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border-left: 4px solid #4776E0;
+}
+
+.section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.2rem;
+  color: #1e293b;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.section h3::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #4776E0;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* 테이블 스타일 */
+.materialTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  table-layout: fixed;
+}
+
+.materialTable th,
+.materialTable td {
+  padding: 1rem;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+.materialTable th {
+  background: linear-gradient(to right, #334d6e, #435f8c);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.materialTable td {
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.materialTable tr:last-child td {
+  border-bottom: none;
+}
+
+.materialTable tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.materialTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+.materialTable tbody tr:hover {
+  background-color: #eef2ff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+/* 각 열의 너비 지정 */
+.materialTable th:nth-child(1),
+.materialTable td:nth-child(1) {
+  width: 30%;
+}
+
+.materialTable th:nth-child(2),
+.materialTable td:nth-child(2) {
+  width: 15%;
+}
+
+.materialTable th:nth-child(3),
+.materialTable td:nth-child(3) {
+  width: 15%;
+}
+
+.materialTable th:nth-child(4),
+.materialTable td:nth-child(4) {
+  width: 15%;
+}
+
+.materialTable th:nth-child(5),
+.materialTable td:nth-child(5) {
+  width: 15%;
+}
+
+.materialTable th:nth-child(6),
+.materialTable td:nth-child(6) {
+  width: 10%;
+}
+
+/* 자재 추가 버튼 */
+.addButton {
+  background: linear-gradient(to right, #10B981, #059669);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.addButton:hover {
+  background: linear-gradient(to right, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+}
+
+.addButton:active {
+  transform: translateY(0);
+}
+
+/* 폼 그룹 스타일 */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.formGroup input[type="date"],
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #1e293b;
+  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.formGroup input[type="date"]:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #4776E0;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.1);
+}
+
+.formGroup textarea {
+  height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* 모달 푸터 */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* 버튼 스타일 */
+.cancelBtn,
+.saveBtn {
+  padding: 0.9rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cancelBtn {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.cancelBtn:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.saveBtn {
+  background: linear-gradient(to right, #4776E0, #6366F1);
+  color: white;
+}
+
+.saveBtn:hover {
+  background: linear-gradient(to right, #3b66cc, #4f46e5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(71, 118, 224, 0.3);
+}
+
+.saveBtn:active,
+.cancelBtn:active {
+  transform: translateY(0);
+}
+
+/* 모달 열기 버튼 */
+.openModalBtn {
+  background: linear-gradient(to right, #F59E0B, #F97316);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(245, 158, 11, 0.25);
+  font-size: 0.95rem;
+}
+
+.openModalBtn:hover {
+  background: linear-gradient(to right, #EA580C, #FB923C);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(245, 158, 11, 0.3);
+}
+
+.openModalBtn:active {
+  transform: translateY(0);
+}
+
+/* 입력 필드 스타일 */
+.materialTable input[type="number"],
+.materialTable input[type="text"] {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: #fcfcfc;
+}
+
+.materialTable input[type="number"]:focus,
+.materialTable input[type="text"]:focus {
+  outline: none;
+  border-color: #4776E0;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.1);
+  background-color: white;
+}
+
+/* 삭제 버튼 스타일 */
+.materialTable button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ef4444;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.materialTable button:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 992px) {
+  .modalContent {
+    width: 90%;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .section {
+    padding: 1.2rem;
+  }
+  
+  .materialTable {
+    font-size: 0.85rem;
+  }
+  
+  .materialTable th,
+  .materialTable td {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+  
+  .section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .cancelBtn,
+  .saveBtn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 애니메이션 효과 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(71, 118, 224, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(71, 118, 224, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(71, 118, 224, 0);
+  }
+}
+
+.saveBtn {
+  animation: pulse 2s infinite;
+}

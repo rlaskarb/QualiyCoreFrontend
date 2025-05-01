@@ -1,0 +1,15 @@
+/* src/pages/routing/WortVolumeChart.module.css */
+
+.chartContainer {
+  height: 400px; /* 명시적 고정 높이 설정 */
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border-radius: 12px;
+}
+
+.chartContainer:hover {
+  box-shadow: 0 6px 16px rgba(71, 118, 224, 0.1);
+  transform: translateY(-4px);
+}

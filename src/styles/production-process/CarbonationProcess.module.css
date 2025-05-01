@@ -1,0 +1,402 @@
+/* 전체 폼 컨테이너 */
+.carbonationForm {
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 1300px;
+    max-width: 100%;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease-out;
+    height: calc(100vh - 170px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .carbonationForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #22D3EE, #67E8F9);
+  }
+  
+  @media (max-width: 1500px) {
+    .carbonationForm {
+      width: 95%;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 제목 스타일 */
+  .carbonationTitle {
+    font-size: 1.8rem;
+    color: #2B3674;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    position: relative;
+    padding-left: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .carbonationTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 1.8rem;
+    background: linear-gradient(to bottom, #22D3EE, #67E8F9);
+    border-radius: 2px;
+  }
+  
+  /* 폼 그리드 레이아웃 */
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: visible;
+  }
+  
+  .gridItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 레이블 스타일 */
+  .gridItem label {
+    font-size: 1rem;
+    color: #2B3674;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  /* 입력 필드 공통 스타일 */
+  .gridItem input,
+  .gridItem textarea {
+    padding: 0.9rem 1.2rem;
+    border: 1px solid #CBD5E0;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    background-color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    color: #2D3748;
+    font-weight: 500;
+  }
+  
+  /* 읽기 전용 필드 스타일 */
+  .gridItem input[readonly] {
+    background-color: #EDF2F7;
+    color: #4A5568;
+    cursor: not-allowed;
+    font-weight: 600;
+  }
+  
+  /* 비활성화된 필드 스타일 */
+  .gridItem input:disabled {
+    background-color: #EDF2F7;
+    color: #A0AEC0;
+    cursor: not-allowed;
+  }
+  
+  /* 포커스된 입력 필드 스타일 */
+  .gridItem input:focus,
+  .gridItem textarea:focus {
+    border-color: #22D3EE;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+  }
+  
+  /* textarea 높이 조정 */
+  .gridItem textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  /* 제출 버튼 스타일 */
+  .submitButton {
+    background: linear-gradient(to right, #22D3EE, #67E8F9);
+    color: white;
+    font-weight: 600;
+    padding: 0.9rem 1.8rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(34, 211, 238, 0.3);
+    font-size: 1rem;
+    min-width: 180px;
+    width: auto;
+    margin-top: 1rem;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    background: linear-gradient(to right, #0EA5E9, #22D3EE);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(34, 211, 238, 0.4);
+  }
+  
+  .submitButton:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .submitButton:disabled {
+    background: #CBD5E0;
+    color: #718096;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  /* 타이머 관련 CSS */
+  .controlsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    grid-column: 1 / -1;
+  }
+  
+  /* 타이머 컨테이너 - 하늘색 그라데이션 사용 */
+  .timerContainer {
+    flex: 2;
+    background: linear-gradient(135deg, #22D3EE, #67E8F9);
+    border-radius: 16px;
+    padding: 0.9rem;
+    box-shadow: 0 8px 15px rgba(34, 211, 238, 0.12);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    min-width: 450px;
+    height: 80px;
+  }
+  
+  .timerContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #22D3EE, #67E8F9);
+  }
+  
+  .timerLabel {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .timerDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0.2rem 0;
+  }
+  
+  .timerIcon {
+    height: 57px;
+    width: 57px;
+  }
+  
+  .timerValue {
+    font-family: 'Consolas', monospace;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.2rem 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 100px;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .timerStatus {
+    font-size: 0.75rem;
+    color: #ECFEFF;
+    margin-top: 0.2rem;
+    animation: pulse 2s infinite;
+    font-weight: 500;
+  }
+  
+  /* 기존 타이머 스타일 */
+  .timer {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #22D3EE;
+    background: linear-gradient(to right, #22D3EE, #67E8F9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(34, 211, 238, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    animation: pulse 2s infinite;
+  }
+  
+  .timer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(to right, #22D3EE, #67E8F9);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* 버튼 컨테이너 */
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+  }
+  
+  /* 진행 막대 스타일 */
+  .progressBar {
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 20px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+  }
+  
+  .progressBarFill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #22D3EE, #67E8F9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progressBarFill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 1100px) {
+    .timerContainer {
+      min-width: 350px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .formGrid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .controlsContainer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .timerContainer {
+      min-width: unset;
+      max-width: 100%;
+      margin-bottom: 1rem;
+    }
+    
+    .buttonContainer {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .carbonationForm {
+      padding: 1.5rem;
+      height: calc(100vh - 150px);
+    }
+    
+    .carbonationTitle {
+      font-size: 1.5rem;
+    }
+    
+    .timerDisplay {
+      flex-direction: row;
+      font-size: 1.2rem;
+    }
+    
+    .timerContainer {
+      height: 70px;
+    }
+    
+    .timerIcon {
+      width: 24px;
+      height: 24px;
+    }
+  }

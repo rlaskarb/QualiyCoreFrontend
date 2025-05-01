@@ -1,0 +1,424 @@
+.container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 190px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+/* 스텝 인디케이터 */
+.stepsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 2rem;
+  padding-right: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #2B3674;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+/* 알림 배너 */
+.alertBanner {
+  background-color: #FEE2E2;
+  color: #EF4444;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 3px 6px rgba(239, 68, 68, 0.15);
+  border-left: 4px solid #EF4444;
+}
+
+/* 자재 섹션 */
+.materialSection {
+  background-color: #F4F7FE;
+  border-radius: 16px;
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #5687F2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.materialSection:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.materialSection h3 {
+  color: #2B6CB0;
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-bottom: 2px solid #E2E8F0;
+  padding-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.materialSection h3::before {
+  content: '🧪';
+  margin-right: 0.6rem;
+}
+
+.materialSection:nth-of-type(2) h3::before {
+  content: '📦';
+}
+
+.materialTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.materialTable th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.materialTable th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.materialTable th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.materialTable td {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.materialTable tr:nth-child(even) td {
+  background-color: #F0F5FF;
+}
+
+.materialTable tr:nth-child(odd) td {
+  background-color: white;
+}
+
+.materialTable tr:hover td {
+  background-color: #EBF8FF;
+}
+
+.materialTable tr:last-child td {
+  border-bottom: none;
+}
+
+.materialTable td:first-child {
+  font-weight: 600;
+  color: #2B6CB0;
+}
+
+.statusBadge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shortage {
+  background-color: #FEE2E2;
+  color: #EF4444;
+  animation: pulse 2s infinite;
+}
+
+.sufficient {
+  background-color: #D1FAE5;
+  color: #10B981;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 맥주 버튼 그룹 */
+.beerButtonGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.beerButtonGroup button {
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2D3748;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.beerButtonGroup button.activeButton {
+  border-color: #2B6CB0;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2);
+}
+
+.beerButtonGroup button:hover:not(.activeButton) {
+  background-color: #F4F7FE;
+  border-color: #A0AEC0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 액션 버튼 */
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+.rightButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prevButton,
+.nextButton,
+.purchaseButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(66, 153, 225, 0.3);
+}
+
+.prevButton {
+  background-color: white;
+  color: #5687F2;
+  border: 1px solid #5687F2;
+}
+
+.buttonGroup > button {
+  margin-left: 10px;
+}
+
+.nextButton {
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  border: none;
+}
+
+.purchaseButton {
+  background: linear-gradient(to right, #48BB78, #38A169);
+  color: white;
+}
+
+.prevButton:hover {
+  background-color: #f8faff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(66, 153, 225, 0.2);
+}
+
+.nextButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4);
+}
+
+.purchaseButton:hover {
+  background: linear-gradient(to right, #38A169, #2F855A);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(56, 161, 105, 0.4);
+}
+
+.purchaseRequestButton {
+  background-color: #FF9800;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+}
+
+.purchaseRequestButton:hover {
+  background-color: #F57C00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+}
+
+/* ✅ 모달 배경 (화면 전체 흐리게) */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* ✅ 모달 컨텐츠 (애니메이션 영역) */
+.modalContent {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.4s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ✅ 성공 메시지 */
+.successText {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2B6CB0;
+  margin-top: 1.5rem;
+}
+
+/* 페이드인 애니메이션 */
+@keyframes fadeInMaterials {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.materialSection {
+  animation: fadeInMaterials 0.5s ease-out;
+}
+
+.successContainer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .materialTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .buttonGroup {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .rightButtons {
+    width: 100%;
+  }
+  
+  .prevButton,
+  .nextButton,
+  .purchaseButton,
+  .purchaseRequestButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .materialSection {
+    padding: 1.2rem;
+  }
+  
+  .beerButtonGroup {
+    justify-content: center;
+  }
+}
+
+/* 스크롤바 스타일링 */
+.materialTable::-webkit-scrollbar {
+  height: 8px;
+}
+
+.materialTable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.materialTable::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.materialTable::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

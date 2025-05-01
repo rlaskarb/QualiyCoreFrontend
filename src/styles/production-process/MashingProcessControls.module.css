@@ -1,0 +1,545 @@
+.mashingProcessForm {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 1300px;
+  max-width: 100%;
+  margin: 20px auto;
+  animation: fadeIn 0.5s ease-out;
+  height: calc(100vh - 170px);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 상단 그라데이션 라인 추가 */
+.mashingProcessForm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #047857, #10B981, #34D399);
+  border-radius: 20px 20px 0 0;
+}
+
+@media (max-width: 1500px) {
+  .mashingProcessForm {
+    width: 95%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mashingTitle {
+  font-size: 1.8rem;
+  color: #2B3674;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.mashingTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.8rem;
+  background: linear-gradient(to bottom, #10B981, #34D399);
+  border-radius: 2px;
+}
+
+/* 그리드 레이아웃 */
+.mFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: visible;
+}
+
+.mGridItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 레이블 스타일 */
+.mLabel01, .mLabel02, .mLabel03, .mLabel04, .mLabel05, .mLabel051, .mLabel06, .mLabel07, .mLabel08 {
+  font-size: 1rem;
+  color: #2B3674;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* 입력 필드 공통 스타일 */
+.mItem01, .mItem02, .mItem03, .mItem04, .mItem05, .mItem06, .mItem07, .mItem08 {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid #CBD5E0;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  background-color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  color: #2D3748;
+  font-weight: 500;
+}
+
+/* 읽기 전용 필드 스타일 */
+input[readonly] {
+  background-color: #EDF2F7;
+  color: #4A5568;
+  cursor: not-allowed;
+  font-weight: 600;
+}
+
+/* 비활성화된 필드 스타일 */
+input:disabled {
+  background-color: #EDF2F7;
+  color: #A0AEC0;
+  cursor: not-allowed;
+}
+
+/* 포커스된 입력 필드 스타일 */
+.mItem01:focus, .mItem02:focus, .mItem03:focus,
+.mItem04:focus, .mItem05:focus, .mItem06:focus,
+.mItem07:focus, .mItem08:focus {
+  border-color: #10B981;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* 특별한 필드 스타일링 */
+.mItem01 {
+  font-weight: bold;
+  color: #2B6CB0;
+}
+
+.mItem07 {
+  font-weight: bold;
+  color: #38A169;
+}
+
+/* 물 비율 레이블 스타일 */
+.mLabel051 {
+  margin-top: 1rem;
+}
+
+/* 버튼과 타이머를 가로로 배치할 컨테이너 */
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  grid-column: 1 / -1;
+}
+
+/* 개선된 타이머 컨테이너 */
+.timerContainer {
+  flex: 2;
+  background: linear-gradient(135deg, #047857 0%, #10B981 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(4, 120, 87, 0.25);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  overflow: hidden;
+  min-width: 450px;
+  height: 120px; /* 높이 증가 */
+  transition: all 0.5s ease;
+}
+
+/* 물결 효과 애니메이션 */
+.timerContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 1;
+  animation: wave 3s infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+.timerLabel {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.timerDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0.5rem 0;
+}
+
+.timerIcon {
+  height: 64px;
+  width: 64px;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.3));
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.timerValue {
+  font-family: 'Consolas', monospace;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.timerStatus {
+  font-size: 0.9rem;
+  color: #6EE7B7;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  animation: blink 1.5s infinite;
+  display: block;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* 온도 시각화 요소 (당화 온도 표시용) */
+.temperatureDisplay {
+  position: relative;
+  background: linear-gradient(to right, #047857, #10B981);
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin: 2rem 0;
+  box-shadow: 0 8px 20px rgba(4, 120, 87, 0.3);
+  overflow: hidden;
+  grid-column: 1 / -1;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperatureDisplay::before {
+  content: '🌡️';
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.temperatureDisplay .current {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.temperatureDisplay .target {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+/* 버튼 컨테이너 - 항상 오른쪽에 배치 */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;  /* 타이머보다 적은 공간 차지 */
+}
+
+/* 개선된 버튼 스타일 */
+.mSaveButton {
+  background: linear-gradient(to right, #047857, #10B981);
+  color: white;
+  font-weight: 600;
+  padding: 1.2rem 2.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(16, 185, 129, 0.3);
+  font-size: 1.1rem;
+  min-width: 200px;
+  width: auto;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.mSaveButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 1;
+  transition: all 0.4s ease;
+  transform: translateX(-100%);
+}
+
+.mSaveButton:hover::after {
+  transform: translateX(100%);
+}
+
+.mSaveButton:hover:not(:disabled) {
+  background: linear-gradient(to right, #065F46, #059669);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(16, 185, 129, 0.4);
+}
+
+.mSaveButton:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.mSaveButton:disabled {
+  background: #CBD5E0;
+  color: #718096;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 진행 막대 스타일 */
+.progressBar {
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 20px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #10B981, #34D399);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBarFill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressBarLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #2D3748;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  z-index: 1;
+}
+
+/* 물 비율 / 곡물 비율 영역 */
+.ratioContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ratioItem {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 반응형 조정 */
+@media (max-width: 1100px) {
+  .timerContainer {
+    min-width: 350px;
+  }
+  
+  .temperatureDisplay {
+    height: 130px;
+  }
+  
+  .temperatureDisplay .current {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .mFormGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .controlsContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .timerContainer {
+    min-width: unset;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    height: 100px;
+  }
+  
+  .timerValue {
+    font-size: 1.6rem;
+  }
+  
+  .timerIcon {
+    height: 50px;
+    width: 50px;
+  }
+  
+  .buttonContainer {
+    justify-content: center;
+  }
+  
+  .mSaveButton {
+    margin-left: 0;  /* 중앙 정렬을 위해 마진 제거 */
+  }
+  
+  .temperatureDisplay {
+    height: 120px;
+    padding: 1.5rem;
+  }
+  
+  .temperatureDisplay .current {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .temperatureDisplay .target {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mashingProcessForm {
+    padding: 1.5rem;
+    height: calc(100vh - 150px);
+  }
+  
+  .mashingTitle {
+    font-size: 1.5rem;
+  }
+  
+  .timerDisplay {
+    flex-direction: row;
+    font-size: 1.2rem;
+  }
+  
+  .timerContainer {
+    height: 90px;
+  }
+  
+  .timerIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .temperatureDisplay {
+    height: 100px;
+  }
+  
+  .temperatureDisplay .current {
+    font-size: 2.2rem;
+  }
+}

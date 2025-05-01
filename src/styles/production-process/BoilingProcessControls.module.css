@@ -1,0 +1,492 @@
+.boilingProcessForm {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 1300px;
+  max-width: 100%;
+  margin: 20px auto;
+  animation: fadeIn 0.5s ease-out;
+  height: calc(100vh - 130px);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1500px) {
+  .boilingProcessForm {
+    width: 95%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boilingTitle {
+  font-size: 1.8rem;
+  color: #2B3674;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.boilingTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.8rem;
+  background: linear-gradient(to bottom, #F97316, #FB923C);
+  border-radius: 2px;
+}
+
+/* 그리드 레이아웃 */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: visible;
+}
+
+.gridItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 레이블 스타일 */
+.bLabel01, .bLabel02, .bLabel03, .bLabel04, .bLabel05, .bLabel06, .bLabel07, 
+.bLabel08, .bLabel09, .bLabel10, .bLabel11, .bLabel12 {
+  font-size: 1rem;
+  color: #2B3674;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* 입력 필드 공통 스타일 */
+.bItem01, .bItem02, .bItem03, .bItem04, .bItem05, .bItem06, .bItem07, 
+.bItem08, .bItem09, .bItem10, .bItem11, .bItem12 {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid #CBD5E0;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  background-color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  color: #2D3748;
+  font-weight: 500;
+}
+
+/* 읽기 전용 필드 스타일 */
+input[readonly] {
+  background-color: #EDF2F7;
+  color: #4A5568;
+  cursor: not-allowed;
+  font-weight: 600;
+}
+
+/* 비활성화된 필드 스타일 */
+input:disabled {
+  background-color: #EDF2F7;
+  color: #A0AEC0;
+  cursor: not-allowed;
+}
+
+/* 포커스된 입력 필드 스타일 */
+.bItem01:focus, .bItem02:focus, .bItem03:focus,
+.bItem04:focus, .bItem05:focus, .bItem06:focus,
+.bItem07:focus, .bItem08:focus, .bItem09:focus,
+.bItem10:focus, .bItem11:focus, .bItem12:focus {
+  border-color: #F97316;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+/* 특별한 필드 스타일링 */
+.bItem01 {
+  font-weight: bold;
+  color: #2B6CB0;
+}
+
+.bItem11 {
+  font-weight: bold;
+  color: #38A169;
+}
+
+/* 온도 디스플레이 스타일 */
+.tempDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  height: 60px;
+}
+
+/* 온도에 따른 색상 변화 */
+.tempCold {
+  background: linear-gradient(to right, #3B82F6, #60A5FA);
+}
+
+.tempWarm {
+  background: linear-gradient(to right, #F59E0B, #FBBF24);
+}
+
+.tempHot {
+  background: linear-gradient(to right, #F97316, #FB923C);
+}
+
+.tempBoiling {
+  background: linear-gradient(to right, #EF4444, #F87171);
+}
+
+/* 온도 변화시 애니메이션 효과 */
+.tempPulse {
+  animation: tempPulse 0.4s ease-out;
+}
+
+@keyframes tempPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 온도 표시 내부 요소 */
+.currentTemp {
+  font-size: 1.8rem;
+  margin-right: 0.3rem;
+  transition: font-size 0.3s ease;
+}
+
+.tempDivider {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  margin: 0 0.3rem;
+}
+
+.targetTemp {
+  font-size: 1.3rem;
+  opacity: 0.8;
+}
+
+.tempUnit {
+  font-size: 1.3rem;
+  margin-left: 0.3rem;
+}
+
+/* 온도 변화 애니메이션 효과 */
+.tempDisplay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 1;
+  animation: shine 3s infinite;
+}
+
+/* 버튼과 타이머를 가로로 배치할 컨테이너 */
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  grid-column: 1 / -1;
+}
+
+/* 타이머 컨테이너 - 왼쪽에 배치, 넓어진 버전 */
+.timerContainer {
+  flex: 2;  /* 더 많은 공간 차지 */
+  background: linear-gradient(135deg, #C2410C 0%, #F97316 100%);
+  border-radius: 16px;
+  padding: 0.9rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  overflow: hidden;
+  min-width: 450px;  /* 최소 너비 설정 */
+  height: 80px;
+}
+
+.timerContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #F97316, #FB923C);
+}
+
+.timerLabel {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
+}
+
+.timerDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0.2rem 0;
+}
+
+.timerIcon {
+  height: 57px;
+  width: 57px;
+}
+
+.timerValue {
+  font-family: 'Consolas', monospace;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.2rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 100px;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timerStatus {
+  font-size: 0.75rem;
+  color: #FDBA74;
+  margin-top: 0.2rem;
+  animation: pulse 2s infinite;
+  font-weight: 500;
+}
+
+/* 버튼 컨테이너 - 항상 오른쪽에 배치 */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;  /* 타이머보다 적은 공간 차지 */
+}
+
+/* 폼 내부 버튼 스타일 */
+.bSaveButton, .fSaveButton {
+  background: linear-gradient(to right, #C2410C, #F97316);
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+  font-size: 1rem;
+  min-width: 180px;
+  width: auto;  /* 너비는 내용에 맞게 자동 조정 */
+  margin-left: auto;  /* 오른쪽 정렬을 위해 */
+  margin-top: 1rem;
+}
+
+.bSaveButton:hover:not(:disabled),
+.fSaveButton:hover:not(:disabled) {
+  background: linear-gradient(to right, #9A3412, #EA580C);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(249, 115, 22, 0.4);
+}
+
+.bSaveButton:active:not(:disabled),
+.fSaveButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.bSaveButton:disabled,
+.fSaveButton:disabled {
+  background: #CBD5E0;
+  color: #718096;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 진행 막대 스타일 */
+.progressBar {
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 20px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #F97316, #FB923C);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBarFill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.5s infinite;
+}
+
+.progressBarLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #2D3748;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .timerContainer {
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .controlsContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .timerContainer {
+    min-width: unset;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .buttonContainer {
+    justify-content: center;
+  }
+  
+  .bSaveButton,
+  .fSaveButton {
+    margin-left: 0;  /* 중앙 정렬을 위해 마진 제거 */
+  }
+}
+
+@media (max-width: 768px) {
+  .boilingProcessForm {
+    padding: 1.5rem;
+    height: calc(100vh - 150px);
+  }
+  
+  .boilingTitle {
+    font-size: 1.5rem;
+  }
+  
+  .timerDisplay {
+    flex-direction: row;
+    font-size: 1.2rem;
+  }
+  
+  .timerContainer {
+    height: 70px;
+  }
+  
+  .timerIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* 온도 표시 반응형 */
+  .tempDisplay {
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .currentTemp {
+    font-size: 1.5rem;
+  }
+  
+  .targetTemp,
+  .tempUnit {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,512 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+
+/* 메인 컨테이너 */
+.mainBar {
+  width: 100%;
+  height: calc(100vh - 160px);
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* 가로 스크롤바 제거 */
+  box-sizing: border-box;
+  margin: 1rem auto;
+  max-width: 1450px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 생산계획 선택 영역 */
+.planInfoName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #edf2f7;
+  background-color: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.planH3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2C5282;
+  font-weight: 600;
+  white-space: nowrap;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.planH3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.2em;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.planSelect {
+  flex: 1;
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  font-size: 0.95rem;
+  color: #2D3748;
+  background-color: white;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  max-width: 500px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.planSelect:focus {
+  border-color: #5687F2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* 작업지시 정보 테이블 */
+.workTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.workTable th,
+.workTable td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.workTable th {
+  background: linear-gradient(to right, #EBF4FF, #EBF8FF);
+  color: #2B6CB0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  width: 150px;
+  position: relative;
+}
+
+.workTable tr:nth-child(even) {
+  background-color: #F7FAFC;
+}
+
+.workTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.workTable td {
+  color: #2D3748;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* BOM 테이블 */
+.bomTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.bomTable th,
+.bomTable td {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.bomTable th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bomTable tr:nth-child(even) {
+  background-color: #F0F5FF;
+}
+
+.bomTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.bomTable tr:hover {
+  background-color: #EBF8FF;
+}
+
+.bomTable td:first-child {
+  font-weight: 600;
+  color: #2B6CB0;
+}
+
+/* 특이사항 영역 */
+.footName {
+  font-size: 1.2rem;
+  color: #2C5282;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.footName::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.2em;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.etc {
+  width: 97.5%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-family: 'Pretendard-Regular', sans-serif;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.etc:focus {
+  border-color: #5687F2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  background-color: white;
+}
+
+/* 등록 버튼 */
+.createButton {
+  align-self: flex-end;
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(66, 153, 225, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.createButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.createButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4);
+}
+
+.createButton:hover::after {
+  transform: translateX(100%);
+}
+
+.createButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(66, 153, 225, 0.3);
+}
+
+/* 성공 모달 */
+.successModal {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  border-top: 4px solid #48BB78;
+}
+
+.successModalHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.successCloseButton {
+  background: #F8FAFF;
+  border: 1px solid #E2E8F0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #718096;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.successCloseButton:hover {
+  background-color: #EBF8FF;
+  color: #2B6CB0;
+  transform: rotate(90deg);
+}
+
+.successModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.successMessage {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2D3748;
+  margin-top: 1rem;
+}
+
+
+/* 성공 모달 특화 스타일 */
+.successModal {
+  border-top: 5px solid #48BB78;
+}
+
+/* 경고 모달 특화 스타일 */
+.warningModal {
+  border-top: 5px solid #F56565;
+}
+
+.successModalContent {
+  color: #2F855A;
+}
+
+.warningModalContent {
+  color: #C53030;
+}
+
+.modal-overlay1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+/* 경고 모달 */
+.warningModal {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  border-top: 4px solid #F56565;
+}
+
+.warningModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.warningModalHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.warningCloseButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #718096;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.warningCloseButton:hover {
+  background-color: #F7FAFC;
+  color: #2D3748;
+}
+
+.warningModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.warningMessage {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2D3748;
+  margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .mainBar {
+    max-width: 95%;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .planInfoName {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .planSelect {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .workTable th,
+  .workTable td,
+  .bomTable th,
+  .bomTable td {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainBar {
+    padding: 1rem;
+    height: auto;
+    min-height: calc(100vh - 80px);
+  }
+
+  .workTable {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bomTable {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .createButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .successModal,
+  .warningModal {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .workTable th,
+  .workTable td,
+  .bomTable th,
+  .bomTable td {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .footName {
+    font-size: 1rem;
+  }
+
+  .etc {
+    min-height: 100px;
+  }
+
+  .createButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

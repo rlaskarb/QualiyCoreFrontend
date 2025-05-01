@@ -1,0 +1,418 @@
+/* src/pages/routing/WortVolumePage.module.css */
+
+.productionPlanContainer {
+  background-color: #f8faff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  min-height: calc(100vh - 190px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  color: #2B3674;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.pageTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.8rem;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 검색바 개선 */
+.searchBar {
+  display: flex;
+  margin-bottom: 1.8rem;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.searchBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+.searchForm {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  width: 100%;
+}
+
+.searchFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.searchFilter label {
+  font-size: 0.9rem;
+  color: #4A5568;
+  font-weight: 600;
+}
+
+.searchFilter input {
+  background-color: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  color: #4A5568;
+}
+
+.searchFilter input:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+.searchFilter input::placeholder {
+  color: #A0AEC0;
+}
+
+.searchBar button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  font-size: 0.95rem;
+  height: auto;
+}
+
+.searchBar button:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}
+
+.searchBar button:active {
+  transform: translateY(0);
+}
+
+.clearButton {
+  background: linear-gradient(to right, #F56565, #ED8936) !important;
+  color: white !important;
+  box-shadow: 0 4px 10px rgba(245, 101, 101, 0.3) !important;
+}
+
+.clearButton:hover {
+  background: linear-gradient(to right, #E53E3E, #DD6B20) !important;
+  box-shadow: 0 6px 15px rgba(245, 101, 101, 0.4) !important;
+}
+
+/* 콘텐츠 컨테이너 */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  flex-grow: 1;
+}
+
+/* 테이블 섹션 */
+.tableSection {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.planTable {
+  width: 100%;
+}
+
+.planTable table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.planTable th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  font-size: 0.95rem;
+}
+
+.planTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.planTable tbody tr {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.planTable tr:nth-child(even) {
+  background-color: #F0F5FF;
+}
+
+.planTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.planTable tbody tr:hover {
+  background-color: #EBF8FF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
+  position: relative;
+  z-index: 5;
+}
+
+/* 상태 스타일 */
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.대기중 {
+  background: linear-gradient(to right, #A0AEC0, #CBD5E0);
+  color: white;
+  box-shadow: 0 2px 5px rgba(160, 174, 192, 0.3);
+}
+
+.진행중 {
+  background: linear-gradient(to right, #3182CE, #63B3ED);
+  color: white;
+  box-shadow: 0 2px 5px rgba(49, 130, 206, 0.3);
+}
+
+.완료 {
+  background: linear-gradient(to right, #38A169, #68D391);
+  color: white;
+  box-shadow: 0 2px 5px rgba(56, 161, 105, 0.3);
+}
+
+.오류 {
+  background: linear-gradient(to right, #E53E3E, #FC8181);
+  color: white;
+  box-shadow: 0 2px 5px rgba(229, 62, 62, 0.3);
+}
+
+/* 로딩 및 에러 메시지 */
+.loadingMessage, .errorMessage, .noDataMessage {
+  text-align: center;
+  padding: 3rem 0;
+  color: #718096;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: #F8FAFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+}
+
+.errorMessage {
+  color: #E53E3E;
+  background-color: #FED7D7;
+}
+
+/* 차트 섹션 */
+.chartSection {
+  margin-top: 20px;
+  padding: 1.8rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  height: 500px; /* 고정 높이 사용 */
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2B3674;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.4rem;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 효율 스타일 */
+.efficiency {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.efficiencyHigh {
+  background: linear-gradient(to right, #9AE6B4, #68D391);
+  color: #22543D;
+}
+
+.efficiencyGood {
+  background: linear-gradient(to right, #FAF089, #F6E05E);
+  color: #744210;
+}
+
+.efficiencyMedium {
+  background: linear-gradient(to right, #FBD38D, #F6AD55);
+  color: #7B341E;
+}
+
+.efficiencyLow {
+  background: linear-gradient(to right, #FEB2B2, #FC8181);
+  color: #822727;
+}
+
+/* 효율 범례 */
+.efficiencyLegend {
+  background: linear-gradient(to right, #EBF4FF, #F0F5FF);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.legendTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2B3674;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+
+.legendTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.legendItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendColor {
+  width: 24px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.legendText {
+  font-size: 0.9rem;
+  color: #4A5568;
+  font-weight: 500;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .searchForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchBar button {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  .productionPlanContainer,
+  .searchBar,
+  .tableSection,
+  .chartSection {
+    padding: 1.2rem;
+  }
+  
+  .planTable th, 
+  .planTable td {
+    padding: 0.8rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Chart.js 스타일 향상 */
+.chartSection canvas {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}

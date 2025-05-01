@@ -1,0 +1,77 @@
+/* 전체 컨테이너 스타일 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 숙성 아이템 스타일 */
+.item {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    transition: 0.3s;
+}
+
+.item:hover {
+    background: #e9ecef;
+}
+
+/* 상단 제목 및 버튼 그룹 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+}
+
+/* 상세정보 버튼 */
+.detailButton {
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.detailButton:hover {
+    background: #0056b3;
+}
+
+/* 닫기 버튼 */
+.closeButton {
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: #dc3545;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.closeButton:hover {
+    background: #a71d2a;
+}
+
+/* 상세 정보 박스 */
+.detailBox {
+    margin-top: 10px;
+    padding: 15px;
+    border: 2px solid #bbb;
+    background: #e3f2fd;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1
+}

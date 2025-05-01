@@ -1,0 +1,313 @@
+/* 작업장 페이지 전체 컨테이너 스타일 */
+.workplace-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #f8faff;
+  min-height: calc(100vh - 70px);
+}
+
+/* 작업장 폼 컨테이너 */
+.workplace-form-container {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  padding-bottom: 2.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.workplace-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+/* 작업장 폼 제목 */
+.workplace-title {
+  font-size: 1.8rem;
+  color: #2B3674;
+  margin-bottom: 2.2rem;
+  font-weight: 700;
+  position: relative;
+  padding-left: 1.2rem;
+  padding-right: 160px; /* 버튼 공간 확보 */
+}
+
+.workplace-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1.5rem;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 작업장 폼 스타일 */
+.workplace-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.workplace-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 100%;
+}
+
+/* 작업장 폼 레이블과 입력 필드 컨테이너 */
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.workplace-form label {
+  display: block;
+  font-size: 0.9rem;
+  color: #4A5568;
+  font-weight: 600;
+}
+
+.workplace-input {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  color: #4A5568;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.workplace-input:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+.workplace-select {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4A5568;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234776E0' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+}
+
+.workplace-select:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+/* 특별한 레이아웃을 위한 스타일 */
+.capacity-field {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.capacity-field .workplace-input {
+  flex: 2;
+}
+
+.capacity-field .workplace-select {
+  flex: 1;
+  max-width: 80px;
+}
+
+/* 버튼 스타일 */
+.workplace-button {
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  font-size: 0.9rem;
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+}
+
+.workplace-button:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}
+
+.workplace-button:active {
+  transform: translateY(0);
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.workplace-form-container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .workplace-form {
+    flex-direction: column;
+  }
+  
+  .workplace-input-group {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .workplace-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .workplace-page {
+    padding: 1rem;
+  }
+  
+  .workplace-form-container {
+    padding: 1.5rem;
+  }
+  
+  .workplace-title {
+    font-size: 1.5rem;
+    margin-bottom: 3rem; /* 모바일에서 버튼 공간 더 확보 */
+    padding-right: 0;
+  }
+  
+  .workplace-button {
+    top: 4rem; /* 모바일에서 제목 아래로 위치 조정 */
+    right: 1.5rem;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .workplace-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 모달 스타일 */
+/* 이 스타일들은 공통 컴포넌트로 이동할 수도 있습니다 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content p {
+  text-align: center; 
+  width: 100%; 
+  font-size: 1.1rem;
+  color: #2D3748;
+  margin: 1.5rem 0;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 120px;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}

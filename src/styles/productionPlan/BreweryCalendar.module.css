@@ -1,0 +1,629 @@
+/* src/styles/productionPlan/BreweryCalendar.module.css */
+.calendarContainer {
+  width: 100%;
+  background-color: #f8faff;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 캘린더 헤더 영역 */
+.calendarHeader {
+  padding: 1.8rem;
+  background: white;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+
+.calendarHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+.calendarHeaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendarTitle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.calendarTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 24px;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.calendarTitle h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-left: 0.75rem;
+  color: #2B3674;
+}
+
+.calendarIcon {
+  color: #4776E0;
+}
+
+.calendarControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.calendarButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4A5568;
+  transition: all 0.3s ease;
+  background-color: #F8FAFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.calendarButton:hover {
+  background-color: #EBF8FF;
+  color: #2B6CB0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todayButton {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  background: linear-gradient(to right, #4776E0, #6875F5);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 10px rgba(71, 118, 224, 0.3);
+}
+
+.todayButton:hover {
+  background: linear-gradient(to right, #3b63c3, #5666e0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(71, 118, 224, 0.4);
+}
+
+.calendarHeaderBottom {
+  display: flex;
+  margin-top: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.viewButtons {
+  display: flex;
+  gap: 0.5rem;
+  background-color: #F0F5FF;
+  border-radius: 12px;
+  padding: 0.4rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.viewButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: #4A5568;
+  font-weight: 500;
+}
+
+.viewButton.active {
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+}
+
+.viewButton:not(.active):hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dateRange {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2B3674;
+  padding: 0.5rem 1rem;
+  background-color: #F8FAFF;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 캘린더 콘텐츠 영역 */
+.calendarContent {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+.calendarGrid {
+  overflow-x: auto;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.calendarDayHeader {
+  display: grid;
+  grid-template-columns: 70px repeat(7, 1fr);
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+}
+
+.dayHeaderCell {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.timeRow {
+  display: grid;
+  grid-template-columns: 70px repeat(7, 1fr);
+  border-bottom: 1px solid #E2E8F0;
+  min-height: 5rem;
+  transition: background-color 0.2s ease;
+}
+
+.timeRow:nth-child(even) {
+  background-color: #F0F5FF;
+}
+
+.timeRow:nth-child(odd) {
+  background-color: white;
+}
+
+.timeRow:hover {
+  background-color: #EBF8FF;
+}
+
+.timeCell {
+  padding: 0.75rem;
+  border-right: 1px solid #E2E8F0;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2B3674;
+  background-color: #F8FAFF;
+}
+
+.dayCell {
+  border-right: 1px solid #E2E8F0;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event {
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-left: 4px solid currentColor;
+  position: relative;
+}
+
+.event:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+}
+
+.eventTitle {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+.eventInfo {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* 일간 뷰 스타일 */
+.dayView {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+.dayContainer {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.dayHeader {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: white;
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.timeSlot {
+  display: flex;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.timeSlot:nth-child(even) {
+  background-color: #F0F5FF;
+}
+
+.timeSlot:nth-child(odd) {
+  background-color: white;
+}
+
+.timeSlot:hover {
+  background-color: #EBF8FF;
+}
+
+.timeSlot:last-child {
+  border-bottom: none;
+}
+
+.timeLabel {
+  width: 70px;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2B3674;
+  background-color: #F8FAFF;
+  border-right: 1px solid #E2E8F0;
+}
+
+.timeContent {
+  flex: 1;
+  padding: 0.75rem;
+  position: relative;
+}
+
+.timeEventList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.timeEvent {
+  padding: 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-left: 4px solid currentColor;
+}
+
+.timeEvent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.timeEventTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeEventTime {
+  font-size: 0.9rem;
+  color: #2B3674;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.timeEventInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #4A5568;
+}
+
+.timeSlotEmpty {
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718096;
+  font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+}
+
+/* 범례 스타일 */
+.legend {
+  padding: 1.8rem;
+  background-color: white;
+  border-top: 1px solid #E2E8F0;
+}
+
+.legendHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.legendIcon {
+  color: #4776E0;
+  margin-right: 0.5rem;
+}
+
+.legendTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2B3674;
+  margin: 0;
+}
+
+.legendItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #2D3748;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.legendItem:hover {
+  background-color: #F0F5FF;
+  transform: translateY(-2px);
+}
+
+.legendColor {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 모달 스타일 */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 550px;
+  width: 95%;
+  padding: 2.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  color: #2B3674;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #E2E8F0;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.modalTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.modalContent {
+  display: grid;
+  gap: 1rem;
+  color: #2D3748;
+}
+
+.modalContent p {
+  padding: 0.75rem;
+  background-color: #F8FAFF;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.modalContent p:hover {
+  background-color: #EBF8FF;
+  transform: translateX(5px);
+}
+
+.modalLabel {
+  font-weight: 700;
+  color: #4776E0;
+  margin-right: 0.5rem;
+}
+
+.modalButton {
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  font-size: 1rem;
+}
+
+.modalButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}
+
+.modalButton:active {
+  transform: translateY(0);
+}
+
+/* 짧은 공정 스타일 */
+.shortProcess {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+}
+
+.shortProcess::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+  .calendarHeader {
+    padding: 1.5rem;
+  }
+  
+  .calendarContent, 
+  .dayView, 
+  .legend {
+    padding: 1.2rem;
+  }
+  
+  .eventTitle,
+  .timeEventTitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendarHeaderTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calendarControls {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .calendarHeaderBottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .viewButtons {
+    width: 100%;
+  }
+  
+  .viewButton {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .dateRange {
+    width: 100%;
+    text-align: center;
+  }
+}

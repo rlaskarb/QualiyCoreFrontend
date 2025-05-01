@@ -1,0 +1,23 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .formSection {
+    width: 100%;
+  }
+  
+  .controlsSection {
+    width: 100%;
+  }
+  
+  @media (max-width: 992px) {
+    .pageContainer {
+      padding: 0.5rem;
+    }
+  }

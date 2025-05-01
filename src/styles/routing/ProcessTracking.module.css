@@ -1,0 +1,656 @@
+.productionPlanContainer {
+  background-color: #f8faff;
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 15px rgba(0, 0, 0, 0.08);
+  min-height: calc(100vh - 190px);
+  overflow: hidden;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  padding: 1.8rem;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  color: #2B3674;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  border-bottom: 2px solid #E2E8F0;
+  padding-bottom: 1rem;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.pageTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+.searchBar {
+  display: flex;
+  gap: 1.2rem;
+  background: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.searchBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4776E0, #8BB3FF);
+}
+
+.searchFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  flex: 1;
+}
+
+.searchFilter label {
+  font-size: 0.95rem;
+  color: #4A5568;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.searchFilter input,
+.searchFilter select {
+  background-color: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  color: #4A5568;
+}
+
+.searchFilter input:focus,
+.searchFilter select:focus {
+  border-color: #4776E0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(71, 118, 224, 0.15);
+}
+
+.searchButton {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+  font-size: 0.95rem;
+  align-self: flex-end;
+  margin-bottom: 0;
+}
+
+.searchButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+}
+
+.searchButton:disabled {
+  background: linear-gradient(to right, #CBD5E1, #E2E8F0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 공정 단계 컨테이너 */
+.processTrackingStages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+/* 개별 공정 단계 카드 */
+.processStage {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.7;
+  border: 1px solid #E2E8F0;
+}
+
+/* 활성화된 공정 단계 강조 */
+.processStage.active {
+  opacity: 1;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* 스테이지 헤더 */
+.stageHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+
+/* 활성화된 스테이지 헤더 */
+.active .stageHeader {
+  background-color: #f8fafc;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+/* 단계 번호 스타일 */
+.stageNumber {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #4a5568;
+  background-color: #f0f0f0;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* 활성화된 스테이지 번호 */
+.active .stageNumber {
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 단계 제목 */
+.stageTitle {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #4a5568;
+  transition: all 0.3s ease;
+}
+
+/* 활성화된 스테이지 제목 */
+.active .stageTitle {
+  color: #2B3674;
+  font-weight: 700;
+}
+
+/* 스테이지 내용 */
+.stageContent {
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* 트래킹 카드 */
+.processTrackingCard {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.processTrackingCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 카드 헤더 */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* LOT 번호 */
+.lotNo {
+  font-weight: 700;
+  color: #2c5282;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+/* 상태 배지 */
+.statusBadge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #4a5568;
+  letter-spacing: 0.02em;
+}
+
+.statusBadge대기중 {
+  background-color: #E6F3FF;
+  color: #1E6FEB;
+}
+
+.statusBadge진행중 {
+  background-color: #E6F7F0;
+  color: #2BA84A;
+}
+
+.statusBadge완료 {
+  background-color: #F0F0F0;
+  color: #6B7280;
+}
+
+/* 카드 내용 */
+.cardContent {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 카드 제목 */
+.cardContent h3 {
+  font-size: 1.125rem;
+  color: #1a365d;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* 시간 정보 */
+.timeInfo {
+  display: grid;
+  gap: 1rem;
+  color: #4a5568;
+  font-size: 1.05rem;
+  margin-top: auto;
+}
+
+.timeInfo p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  padding-left: 1.1rem;
+  line-height: 1.4;
+}
+
+.timeInfo p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* 시작, 예상 종료 라벨을 더 눈에 띄게 만들기 */
+.timeInfo p strong {
+  display: inline-block;
+  font-weight: 700;
+  color: inherit;
+  opacity: 0.8;
+  margin-right: 0.5rem;
+}
+
+/* 미정 텍스트 스타일 */
+.timeInfo p span {
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* 진행 중인 카드 스타일 */
+.processTrackingCardStatus진행중 {
+  color: white;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.processTrackingCardStatus진행중::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 1;
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 진행 중인 카드의 텍스트 색상 조정 */
+.processTrackingCardStatus진행중 .cardHeader,
+.processTrackingCardStatus진행중 .cardContent {
+  background-color: transparent;
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.processTrackingCardStatus진행중 .lotNo {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.15rem;
+}
+
+.processTrackingCardStatus진행중 .statusBadge {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.processTrackingCardStatus진행중 .timeInfo {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* 공정별 색상 */
+/* 분쇄 */
+.process분쇄Active .stageNumber {
+  background-color: #3B82F6;
+}
+
+.process분쇄Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #3B82F6;
+}
+
+.process분쇄Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #3B82F6, #60a5fa);
+}
+
+/* 당화 */
+.process당화Active .stageNumber {
+  background-color: #10B981;
+}
+
+.process당화Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #10B981;
+}
+
+.process당화Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #10B981, #34d399);
+}
+
+/* 여과 */
+.process여과Active .stageNumber {
+  background-color: #F43F5E;
+}
+
+.process여과Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #F43F5E;
+}
+
+.process여과Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #F43F5E, #fb7185);
+}
+
+/* 끓임 */
+.process끓임Active .stageNumber {
+  background-color: #F97316;
+}
+
+.process끓임Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #F97316;
+}
+
+.process끓임Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #F97316, #fb923c);
+}
+
+/* 냉각 */
+.process냉각Active .stageNumber {
+  background-color: #6366F1;
+}
+
+.process냉각Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #6366F1;
+}
+
+.process냉각Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #6366F1, #818cf8);
+}
+
+/* 발효 */
+.process발효Active .stageNumber {
+  background-color: #8B5CF6;
+}
+
+.process발효Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #8B5CF6;
+}
+
+.process발효Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #8B5CF6, #a78bfa);
+}
+
+/* 숙성 */
+.process숙성Active .stageNumber {
+  background-color: #14B8A6;
+}
+
+.process숙성Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #14B8A6;
+}
+
+.process숙성Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #14B8A6, #2dd4bf);
+}
+
+/* 숙성후여과 */
+.process숙성후여과Active .stageNumber {
+  background-color: #EC4899;
+}
+
+.process숙성후여과Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #EC4899;
+}
+
+.process숙성후여과Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #EC4899, #f472b6);
+}
+
+/* 탄산조정 */
+.process탄산조정Active .stageNumber {
+  background-color: #22D3EE;
+}
+
+.process탄산조정Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #22D3EE;
+}
+
+.process탄산조정Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #22D3EE, #67e8f9);
+}
+
+/* 패키징출하 */
+.process패키징출하Active .stageNumber {
+  background-color: #64748B;
+}
+
+.process패키징출하Active .stageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #64748B;
+}
+
+.process패키징출하Active .processTrackingCardStatus진행중 { 
+  background: linear-gradient(135deg, #64748B, #94a3b8);
+}
+
+/* 데이터 없음 */
+.noTrackingData {
+  text-align: center;
+  color: #A0AEC0;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: #F8FAFF;
+  border-radius: 10px;
+  border: 1px dashed #E2E8F0;
+}
+
+.noData {
+  text-align: center;
+  padding: 2.5rem;
+  font-size: 1.1rem;
+  color: #718096;
+  font-weight: 500;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  margin-top: 1.5rem;
+}
+
+/* 진행 중 카드에 애니메이션 효과 */
+@keyframes pulse {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); 
+  }
+  70% { 
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); 
+  }
+}
+
+.processTrackingCardStatus진행중 {
+  animation: pulse 2s infinite;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+  .processTrackingStages {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .searchBar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .searchButton {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .processTrackingStages {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .pageTitle {
+    font-size: 1.6rem;
+  }
+  
+  .productionPlanContainer {
+    padding: 1.2rem;
+  }
+}

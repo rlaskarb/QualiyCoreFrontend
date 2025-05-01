@@ -1,0 +1,434 @@
+.main {
+    background-color: #f8faff;
+    min-height: 100vh;
+    font-family: 'Pretendard-Regular', sans-serif;
+  }
+  
+  /* 메인 캘린더 컨테이너 */
+  .maiBar {
+    height: 75vh;
+    width: 90%;
+    margin: 25px auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* 프로필 섹션 */
+  .profileBar {
+    border: none;
+    width: 500px;
+    height: 200px;
+    display: inline-block;
+    margin-left: 65px;
+    margin-right: 85px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #5687F2;
+  }
+  
+  /* 프로필 섹션 배경 그라데이션 효과 */
+  .profileBar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(86, 135, 242, 0.1) 0%, rgba(86, 135, 242, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  
+  /* 시간 관리 테이블 섹션 */
+  .tableBar {
+    border: none;
+    width: 842px;
+    height: 200px;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #5687F2;
+  }
+  
+  /* 프로필 이미지 */
+  .profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: 15px;
+    object-fit: cover;
+    border: 3px solid #5687F2;
+    box-shadow: 0 4px 8px rgba(86, 135, 242, 0.3);
+  }
+  
+  /* 프로필 이름 */
+  .profileName {
+    margin-left: 70px;
+    margin-top: 5px;
+    font-size: 1.1rem;
+    color: #2B3674;
+  }
+  
+  .profileName1 {
+    margin-left: 62px;
+    color: #4A5568;
+  }
+  
+  /* 프로필 섹션 컨텐츠 레이아웃 */
+  .profileBar .leftContent,
+  .profileBar .rightContent {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* 프로필 섹션 구분선 */
+  .profileBar .divider {
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(to bottom, rgba(86, 135, 242, 0.7), rgba(139, 179, 255, 0.3));
+    margin-left: 195px;
+    margin-top: -183px;
+  }
+  
+  /* 프로필 오른쪽 컨텐츠 */
+  .rightContent {
+    margin-left: 255px;
+    margin-top: -145px;
+  }
+  
+  .rightContent h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .rightContent p {
+    color: #4A5568;
+    margin: 0.5rem 0;
+  }
+  
+  /* 테이블 스타일 */
+  .styledTb {
+    width: 96%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-left: 17px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .styledTb th,
+  .styledTb td {
+    padding: 12px 15px;
+    text-align: center;
+  }
+  
+  .styledTb th {
+    background: linear-gradient(to right, #2B6CB0, #4299E1);
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .styledTb tbody tr:nth-child(even) {
+    background-color: #F0F5FF;
+  }
+  
+  .styledTb tbody tr:nth-child(odd) {
+    background-color: white;
+  }
+  
+  .styledTb tbody tr:hover {
+    background-color: #EBF8FF;
+  }
+  
+  .styledTb td {
+    vertical-align: middle;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 0.95rem;
+  }
+  
+  .styledTb tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* 테이블 제목 */
+  .tableName {
+    margin-left: 20px;
+    color: #2B3674;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 0.8rem;
+    display: inline-block;
+  }
+  
+  .tableName::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1.3em;
+    background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+    border-radius: 2px;
+  }
+  
+  /* FullCalendar 커스텀 스타일 */
+  .fc {
+    overflow: hidden;
+    height: 100% !important;
+    font-family: 'Pretendard-Regular', sans-serif;
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.5em;
+    color: #2B3674;
+    font-weight: 600;
+  }
+  
+  .fc .fc-button-primary {
+    background-color: #5687F2;
+    border-color: #5687F2;
+    transition: all 0.3s ease;
+  }
+  
+  .fc .fc-button-primary:hover {
+    background-color: #4776E0;
+    border-color: #4776E0;
+  }
+  
+  .fc .fc-button-primary:not(:disabled).fc-button-active,
+  .fc .fc-button-primary:not(:disabled):active {
+    background-color: #2B6CB0;
+    border-color: #2B6CB0;
+  }
+  
+  .fc .fc-daygrid-day-number {
+    font-size: 0.9em;
+    color: #4A5568;
+    font-weight: 500;
+    padding: 8px;
+  }
+  
+  .fc .fc-col-header-cell-cushion {
+    padding: 10px 4px;
+    font-weight: 600;
+  }
+  
+  /* 이벤트 스타일 */
+  .fc-event {
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+    padding: 2px 4px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  
+  .fc-event:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* 모달 스타일 */
+  .modal {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    animation: modalAppear 0.3s ease-out;
+  }
+  
+  @keyframes modalAppear {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 9998;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .modalContent {
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #f8faff;
+    border: 1px solid #E2E8F0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #4A5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .closeButton:hover {
+    background-color: #EBF8FF;
+    color: #2B6CB0;
+    transform: rotate(90deg);
+  }
+  
+  .detailh2 {
+    text-align: center;
+    color: #2B3674;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .detailh2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #4776E0, #8BB3FF);
+    border-radius: 2px;
+  }
+  
+  .modalContent p {
+    padding: 8px 0;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modalContent p b {
+    min-width: 100px;
+    color: #2B6CB0;
+  }
+  
+  .modalCloseBtn {
+    background: linear-gradient(to right, #4C51BF, #6875F5);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+    display: inline-block;
+    float: right;
+  }
+  
+  .modalCloseBtn:hover {
+    background: linear-gradient(to right, #434190, #5A67D8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(76, 81, 191, 0.4);
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 1500px) {
+    .profileBar, .tableBar {
+      width: 90%;
+      margin: 15px auto;
+      display: block;
+    }
+    
+    .rightContent {
+      margin-left: 220px;
+    }
+    
+    .divider {
+      margin-left: 185px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .maiBar {
+      width: 95%;
+      padding: 15px;
+    }
+    
+    .profileBar, .tableBar {
+      height: auto;
+      padding: 15px;
+    }
+    
+    .divider {
+      display: none;
+    }
+    
+    .rightContent {
+      margin-left: 0;
+      margin-top: 15px;
+      text-align: center;
+    }
+    
+    .profile {
+      display: block;
+      margin: 0 auto 15px;
+    }
+    
+    .profileName, .profileName1 {
+      text-align: center;
+      margin-left: 0;
+    }
+    
+    .modal {
+      width: 90%;
+      left: 50%;
+    }
+  }

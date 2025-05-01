@@ -1,0 +1,462 @@
+.container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 190px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2B3674;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  border-radius: 2px;
+}
+
+/* 대시보드 카드 스타일 개선 */
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2.5rem;
+  gap: 1.5rem;
+}
+
+.card {
+  background: linear-gradient(135deg, #F8FAFF 0%, #EFF3FF 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid #5687F2;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(86, 135, 242, 0.15);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  color: #2D3748;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2B6CB0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(86, 135, 242, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* 첫 번째 카드만 다르게 스타일링 */
+.card:nth-child(1) {
+  border-top-color: #4C51BF;
+}
+
+.card:nth-child(1) p {
+  color: #4C51BF;
+}
+
+/* 두 번째 카드만 다르게 스타일링 */
+.card:nth-child(2) {
+  border-top-color: #38A169;
+}
+
+.card:nth-child(2) p {
+  color: #38A169;
+}
+
+/* 세 번째 카드만 다르게 스타일링 */
+.card:nth-child(3) {
+  border-top-color: #E53E3E;
+}
+
+.card:nth-child(3) p {
+  color: #E53E3E;
+}
+
+/* 섹션 제목 스타일 개선 */
+.subtitle {
+  font-size: 1.4rem;
+  color: #2B3674;
+  margin: 1.5rem 0 1rem;
+  font-weight: 600;
+  position: relative;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.4em;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 2px;
+}
+
+/* 테이블 스타일 개선 */
+.table {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.table th {
+  background: linear-gradient(to right, #2B6CB0, #4299E1);
+  color: white;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.table td {
+  padding: 0.9rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.table tr:nth-child(even) td {
+  background-color: #F0F5FF;
+}
+
+.table tr:nth-child(odd) td {
+  background-color: white;
+}
+
+.table tr:hover td {
+  background-color: #EBF8FF;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 신청 내역 테이블의 첫번째 열 스타일링 */
+.table td:first-child {
+  font-weight: 600;
+  color: #2B6CB0;
+}
+
+/* 첫 번째 행 강조 스타일 제거 */
+/* .table tbody tr:first-child td {
+  border-left: 3px solid #5687F2;
+} */
+
+/* 버튼 스타일 개선 */
+.orderButton {
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(76, 81, 191, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.orderButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 81, 191, 0.4);
+}
+
+.orderButton:active {
+  transform: translateY(0);
+}
+
+/* 모달 스타일 개선 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalContent h3 {
+  font-size: 1.5rem;
+  color: #2B3674;
+  margin-bottom: 1rem;
+}
+
+.modalContent p {
+  color: #4A5568;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirmButton {
+  background: linear-gradient(to right, #4C51BF, #6875F5);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.cancelButton {
+  background: white;
+  color: #4A5568;
+  border: 1px solid #CBD5E0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.confirmButton:hover {
+  background: linear-gradient(to right, #434190, #5A67D8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+}
+
+.cancelButton:hover {
+  background-color: #F7FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 기타 버튼 스타일 */
+.moreButton {
+  background: linear-gradient(to right, #2B3674, #3B4A8F);
+  color: white;
+  padding: 0.75rem 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(43, 54, 116, 0.3);
+}
+
+.moreButton:hover {
+  background: linear-gradient(to right, #1A254A, #2A3A7F);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(43, 54, 116, 0.4);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .dashboard {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: calc(33% - 2rem);
+    min-width: 150px;
+  }
+  
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .dashboard {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .modalContent {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .modalButtons {
+    flex-direction: column;
+  }
+  
+  .confirmButton, 
+  .cancelButton {
+    width: 100%;
+  }
+}
+
+/* 테이블 내 상태 뱃지 */
+.statusBadge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pending {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+.completed {
+  background-color: #D1FAE5;
+  color: #10B981;
+}
+
+/* 스크롤바 스타일링 */
+.table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 페이지 전환 애니메이션 */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeInPage 0.5s ease-out;
+}

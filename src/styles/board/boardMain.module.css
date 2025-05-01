@@ -1,0 +1,268 @@
+/* Main Container */
+.boardMainContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.boardMainContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5E4BFF 0%, #8BB3FF 100%);
+}
+
+/* 헤더 컨테이너 */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.5rem 0rem 1.5rem; 
+  border-bottom: 1px solid #eee;
+  margin-bottom: -0.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.title:hover {
+  color: #5E4BFF;
+}
+
+/* 컨텐츠 컨테이너 */
+.contentContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  overflow: hidden;
+}
+
+/* 로딩 및 에러 컨테이너 */
+.loadingContainer, .errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.errorContainer p {
+  color: #E53E3E;
+  font-size: 1rem;
+}
+
+/* Table Container */
+.boardTableContainer {
+  flex-grow: 1;
+  overflow: auto;
+  margin-top: 1rem;
+}
+
+/* Table Style */
+.boardTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Table Header */
+.tableHeader {
+  background: linear-gradient(to right, #5E4BFF, #8BB3FF);
+}
+
+.tableHeader th {
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  font-size: 0.95rem;
+}
+
+/* Table Body */
+.boardTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.boardTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+.boardTable tbody tr:nth-child(even):not(.importantRow):not(.noticeRow) {
+  background-color: #F0F5FF;
+}
+
+.boardTable tbody tr:nth-child(odd):not(.importantRow):not(.noticeRow) {
+  background-color: white;
+}
+
+.boardTable tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
+  position: relative;
+  z-index: 5;
+}
+
+/* 중요와 공지 행 스타일 */
+.boardTable tbody tr.importantRow {
+  background-color: rgba(245, 101, 101, 0.08);
+}
+
+.boardTable tbody tr.noticeRow {
+  background-color: rgba(94, 75, 255, 0.08);
+}
+
+/* 호버 시에도 색상 유지하면서 강조 */
+.boardTable tbody tr.importantRow:hover {
+  background-color: rgba(245, 101, 101, 0.15);
+}
+
+.boardTable tbody tr.noticeRow:hover {
+  background-color: rgba(94, 75, 255, 0.15);
+}
+
+/* 테이블 열 너비 설정 */
+.boardTable th:nth-child(1),
+.boardTable td:nth-child(1) {
+  width: 80px;
+}
+
+.boardTable th:nth-child(2),
+.boardTable td:nth-child(2) {
+  width: 300px;
+  text-align: left;
+}
+
+.boardTable th:nth-child(3),
+.boardTable td:nth-child(3) {
+  width: 100px;
+}
+
+.boardTable th:nth-child(4),
+.boardTable td:nth-child(4) {
+  width: 100px;
+}
+
+/* Category Tag */
+.importantTag,
+.noticeTag,
+.normalTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 70px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.importantTag {
+  background: linear-gradient(to right, #F56565, #FC8181);
+  color: white;
+  box-shadow: 0 2px 5px rgba(245, 101, 101, 0.3);
+}
+
+.normalTag {
+  background: linear-gradient(to right, #A0AEC0, #CBD5E0);
+  color: white;
+  box-shadow: 0 2px 5px rgba(160, 174, 192, 0.3);
+}
+
+.noticeTag {
+  background: linear-gradient(to right, #5E4BFF, #8BB3FF);
+  color: white;
+  box-shadow: 0 2px 5px rgba(94, 75, 255, 0.3);
+}
+
+/* 로딩 및 에러 메시지 */
+.boardTable tbody tr td[colspan="4"] {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #718096;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boardTable tbody tr {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .headerContainer, .contentContainer {
+    padding: 1rem;
+  }
+
+  .boardTable th,
+  .boardTable td {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .importantTag,
+  .noticeTag,
+  .normalTag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer, .contentContainer {
+    padding: 0.8rem;
+  }
+
+  .boardTable td {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .boardTable th:nth-child(3),
+  .boardTable td:nth-child(3) {
+    display: none;
+  }
+}

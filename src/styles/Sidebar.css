@@ -1,0 +1,442 @@
+/* 1. 사이드바 메인 컨테이너 스타일 */
+.sidebar {
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #f9fbff);
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid rgba(226, 232, 240, 0.8);
+  overflow-y: auto;
+  padding: 1.5rem;
+  flex-direction: column;
+  display: flex;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
+}
+
+/* 2. 사이드바 제목 (BräuHaus ERP) 스타일 */
+.sidebar h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2B3674;
+  margin-bottom: 2rem;
+  padding-left: 0.5rem;
+}
+
+/* 3. 메뉴 리스트 기본 스타일 */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* 4. 최상위 메뉴 아이템 여백 */
+.sidebar>ul>li {
+  margin-bottom: 0.7rem;
+}
+
+/* 5. 메인 메뉴 버튼과 링크 공통 스타일 */
+.sidebar>ul>li>button,
+.sidebar>ul>li>a {
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: none;
+  color: #000000;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar>ul>li>button::after,
+.sidebar>ul>li>a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #4776E0, #8BB3FF);
+  border-radius: 0 4px 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* 6. 메인 메뉴 호버 효과 */
+.sidebar>ul>li>button:hover,
+.sidebar>ul>li>a:hover {
+  background-color: rgba(240, 245, 255, 0.9);
+  color: #4776E0;
+  box-shadow: 0 2px 6px rgba(71, 118, 224, 0.1);
+  transform: translateX(3px);
+}
+
+.sidebar>ul>li>button:hover::after,
+.sidebar>ul>li>a:hover::after {
+  height: 100%;
+}
+
+/* 7. 서브메뉴 스타일 */
+.submenu {
+  margin-top: 0.4rem;
+  padding-left: 1rem !important;
+  border-left: 1px dashed rgba(113, 128, 150, 0.3);
+  margin-left: 1rem;
+}
+
+.submenu li {
+  margin-bottom: 0.2rem;
+}
+
+/* 8. 서브메뉴 링크 스타일 */
+.submenu a {
+  position: relative;
+  display: block;
+  padding: 0.55rem 1rem;
+  color: #2D3748;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-left: 2rem;
+}
+
+.submenu a::before {
+  content: '•';
+  position: absolute;
+  left: 0.7rem;
+  color: #4A5568;
+  opacity: 0.8;
+}
+
+.submenu a::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(71, 118, 224, 0.07), transparent);
+  transition: all 0.5s ease;
+}
+
+/* 9. 서브메뉴 링크 호버 효과 */
+.submenu a:hover {
+  color: #4776E0;
+  background-color: rgba(71, 118, 224, 0.05);
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.submenu a:hover::before {
+  color: #4776E0;
+}
+
+.submenu a:hover::after {
+  left: 100%;
+}
+
+/* 10. 활성화된 메뉴 스타일 */
+.sidebar button.active,
+.sidebar a.active {
+  background: linear-gradient(to right, rgba(71, 118, 224, 0.1), rgba(139, 179, 255, 0.05));
+  color: #4776E0;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(71, 118, 224, 0.1);
+}
+
+.sidebar button.active::after,
+.sidebar a.active::after {
+  height: 100%;
+}
+
+/* 11. 아이콘 스타일 */
+.sidebar svg {
+  margin-right: 1rem;
+  color: #4A5568;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.sidebar>ul>li>button:hover svg,
+.sidebar>ul>li>a:hover svg,
+.sidebar button.active svg,
+.sidebar a.active svg {
+  color: #4776E0;
+  transform: scale(1.1);
+}
+
+/* 12. 스크롤바 커스텀 스타일 */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #F7FAFC;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 224, 0.7);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #A0AEC0;
+}
+
+/* 로고 컨테이너 */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.logo-container::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(71, 118, 224, 0.2), transparent);
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: contain;
+  background-color: transparent;
+  box-shadow: 0 3px 10px rgba(71, 118, 224, 0.08);
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(5deg);
+}
+
+/* 하단 프로필 영역 */
+.sidebar-profile {
+  width: calc(100% - 3rem);
+  margin-top: auto;
+  background-color: #f8faff;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.profile-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+}
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.profile-image img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4776E0;
+  box-shadow: 0 4px 10px rgba(71, 118, 224, 0.2);
+  transition: all 0.3s ease;
+}
+
+.profile-image img:hover {
+  transform: scale(1.05);
+  border-color: #8BB3FF;
+}
+
+.profile-details {
+  width: 100%;
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2B3674;
+  margin-bottom: 5px;
+}
+
+.profile-role {
+  font-size: 0.85rem;
+  color: #4A5568;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.profile-btn {
+  background: linear-gradient(to right, #f8faff, #f0f5ff);
+  color: #4776E0;
+  border: 1px solid rgba(71, 118, 224, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(71, 118, 224, 0.1);
+}
+
+.profile-btn:hover {
+  background: linear-gradient(to right, #4776E0, #6893f0);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(71, 118, 224, 0.2);
+}
+
+.castoro-titling-regular {
+  font-family: "Castoro Titling", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.castoro-titling-regular-btn {
+  all: unset;
+  font-family: "Castoro Titling", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
+  color: #2B3674;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.castoro-titling-regular-btn:hover {
+  text-shadow: 0 2px 5px rgba(71, 118, 224, 0.3);
+  transform: translateY(-1px);
+}
+
+/* 알림 배지 */
+.notification-badge,
+.notification-badge-board {
+  position: absolute;
+  top: 0;
+  right: 144px;
+  transform: translateY(-50%);
+  color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  animation: pop-in 0.3s ease-out;
+}
+
+.notification-badge-workorder {
+  position: absolute;
+  top: 0;
+  right: 113px;
+  transform: translateY(-50%);
+  color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  animation: pop-in 0.3s ease-out;
+}
+
+.notification-badge {
+  background: linear-gradient(to right, #ff4757, #ff6b81);
+}
+
+.notification-badge-workorder {
+  background: linear-gradient(to right, #ff4757, #ff6b81);
+}
+
+.notification-badge-board {
+  background: linear-gradient(to right, #3498db, #54a0ff);
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-item-content {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* 서브메뉴 애니메이션 */
+.submenu {
+  animation: slideDown 0.3s ease-out;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
